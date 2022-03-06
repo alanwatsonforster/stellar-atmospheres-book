@@ -1,0 +1,256 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%: style: font
+
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%: style: language and encoding
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\hyphenation{iso-tropic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%: style: SVN
+
+\usepackage[revrange,final]{svninfo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%: style: layout
+
+\ifoutputbook
+\usepackage[headings,cm]{fullpage}
+\twocolumn
+\fi
+
+\usepackage{hyperref}
+
+\newcommand{\comment}[1]{[{\itshape #1}]}
+
+\setcounter{secnumdepth}{0}
+
+\ifoutputbook
+\newcommand{\newslide}{\relax}
+\fi
+\ifoutputslides
+\newcommand{\newslide}{\clearpage}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%: style: graphics
+
+\usepackage{graphicx}
+\newcommand{\includefigure}[2][1.0]{%
+ \centerline{%
+  \includegraphics[width=#1\linewidth]{Figures/#2}%
+ }%
+}
+
+\usepackage{tikz}
+
+%\usetikzlibrary{external}
+%\tikzexternalize
+%\tikzsetexternalprefix{external/}
+
+\newcommand{\plotscale}{0.7}
+\newcommand{\plottextstyle}{\small}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.5}
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{patterns}
+
+\usepgflibrary{arrows.meta}
+\tikzset{>=Latex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%: style: mathematics
+
+\usepackage{amsmath}
+
+\newcommand{\eqlabel}[1]{\label{equation-#1}}
+\renewcommand{\eqref}[1]{Equation (\ref{equation-#1})}
+
+\renewcommand{\vec}[1]{\mbox{\itshape\bfseries#1}}
+\newcommand{\mat}[1]{\mbox{\upshape\bfseries#1}}
+\newcommand{\matLambda}{\mbox{$\Lambda$}}
+\renewcommand{\[}{\begin{align}}
+\renewcommand{\]}{\end{align}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%: style: astronomy commands
+
+% We cannot use \AA or Å in math mode (as it provokes the LaTeX warning "Command \r 
+% invalid in math mode"), therefore we switch to LR mode.
+\renewcommand{\Angstrom}{\mbox{Å}}
+
+\newcommand{\micron}{\mbox{$\mu$m}}
+\newcommand{\ion}[2]{\mbox{#1$\:${\small#2}}}
+\newcommand{\singlet}[1]{\ensuremath{\lambda #1}}
+\newcommand{\doublet}[2]{\ensuremath{\lambda\lambda\ #1, #2}}
+\newcommand{\triplet}[3]{\ensuremath{\lambda\lambda\lambda\ #1, #2, #3}}
+\newcommand{\eV}{\mbox{eV}}
+\newcommand{\kms}{\mbox{$\mathrm{km\,s^{-1}}$}}
+\newcommand{\Halpha}{\mbox{$\mathrm{H}\alpha$}}
+\newcommand{\Hbeta}{\mbox{$\mathrm{H}\beta$}}
+
+\newcommand{\Teff}{T_\mathrm{eff}}
+\newcommand{\Heff}{H_\mathrm{eff}}
+\newcommand{\chiR}{\chi_\mathrm{R}}
+\newcommand{\tauR}{\tau_\mathrm{R}}
+\newcommand{\mH}{m_\mathrm{H}}
+
+\newcommand{\Msun}{\ensuremath{M_\odot}}
+\newcommand{\Mdot}{\ensuremath{\dot M}}
+\newcommand{\vinf}{\ensuremath{v_\infty}}
+
+
+\newcommand{\reaction}[2]{\ensuremath{#1 \rightarrow #2}}
+\newcommand{\reversiblereaction}[2]{\ensuremath{#1 \rightleftharpoons #2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%: style: problems and answers
+
+\newcounter{problemset}[chapter]
+\newcounter{problem}[problemset]
+
+\newcommand{\problemset}{
+ \refstepcounter{problemset}
+ \clearpage
+ \section{Problem Set \arabic{problemset}}
+}
+
+\renewcommand{\theproblem}{\arabic{problemset}.\arabic{problem}}
+
+\newenvironment{problem}{%
+ \refstepcounter{problem}%
+ \paragraph*{Problem \theproblem.}%
+}{
+ \par
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%: style: bibliography
+
+\usepackage{natbib} 
+\bibpunct[, ]{(}{)}{;}{a}{}{,}
+
+\renewcommand{\bibsection}{
+ \chapter*{\refname}
+ \addcontentsline{toc}{chapter}{\numberline{}References}
+}
+
+\setlength{\bibsep}{0pt}
+
+% Journal names adapted from AASTeX
+\newcommand\aj{AJ}% 
+          % Astronomical Journal 
+\newcommand\araa{ARA\&A}% 
+          % Annual Review of Astron and Astrophys 
+\newcommand\apj{ApJ}% 
+          % Astrophysical Journal 
+\newcommand\apjl{ApJ}% 
+          % Astrophysical Journal, Letters 
+\newcommand\apjs{ApJS}% 
+          % Astrophysical Journal, Supplement 
+\newcommand\ao{Appl.~Opt.}% 
+          % Applied Optics 
+\newcommand\apss{Ap\&SS}% 
+          % Astrophysics and Space Science 
+\newcommand\aap{A\&A}% 
+          % Astronomy and Astrophysics 
+\newcommand\aapr{A\&A~Rev.}% 
+          % Astronomy and Astrophysics Reviews 
+\newcommand\aaps{A\&AS}% 
+          % Astronomy and Astrophysics, Supplement 
+\newcommand\azh{AZh}% 
+          % Astronomicheskii Zhurnal 
+\newcommand\baas{BAAS}% 
+          % Bulletin of the AAS 
+\newcommand\jrasc{JRASC}% 
+          % Journal of the RAS of Canada 
+\newcommand\memras{MmRAS}% 
+          % Memoirs of the RAS 
+\newcommand\mnras{MNRAS}% 
+          % Monthly Notices of the RAS 
+\newcommand\pra{Phys.~Rev.~A}% 
+          % Physical Review A: General Physics 
+\newcommand\prb{Phys.~Rev.~B}% 
+          % Physical Review B: Solid State 
+\newcommand\prc{Phys.~Rev.~C}% 
+          % Physical Review C 
+\newcommand\prd{Phys.~Rev.~D}% 
+          % Physical Review D 
+\newcommand\pre{Phys.~Rev.~E}% 
+          % Physical Review E 
+\newcommand\prl{Phys.~Rev.~Lett.}% 
+          % Physical Review Letters 
+\newcommand\pasp{PASP}% 
+          % Publications of the ASP 
+\newcommand\pasj{PASJ}% 
+          % Publications of the ASJ 
+\newcommand\qjras{QJRAS}% 
+          % Quarterly Journal of the RAS 
+\newcommand\skytel{S\&T}% 
+          % Sky and Telescope 
+\newcommand\solphys{Sol.~Phys.}% 
+          % Solar Physics 
+\newcommand\sovast{Soviet~Ast.}% 
+          % Soviet Astronomy 
+\newcommand\ssr{Space~Sci.~Rev.}% 
+          % Space Science Reviews 
+\newcommand\zap{ZAp}% 
+          % Zeitschrift fuer Astrophysik 
+\newcommand\nat{Nature}% 
+          % Nature 
+\newcommand\iaucirc{IAU~Circ.}% 
+          % IAU Cirulars 
+\newcommand\aplett{Astrophys.~Lett.}% 
+          % Astrophysics Letters 
+\newcommand\apspr{Astrophys.~Space~Phys.~Res.}% 
+          % Astrophysics Space Physics Research 
+\newcommand\bain{Bull.~Astron.~Inst.~Netherlands}% 
+          % Bulletin Astronomical Institute of the Netherlands 
+\newcommand\fcp{Fund.~Cosmic~Phys.}% 
+          % Fundamental Cosmic Physics 
+\newcommand\gca{Geochim.~Cosmochim.~Acta}% 
+          % Geochimica Cosmochimica Acta 
+\newcommand\grl{Geophys.~Res.~Lett.}% 
+          % Geophysics Research Letters 
+\newcommand\jcp{J.~Chem.~Phys.}% 
+          % Journal of Chemical Physics 
+\newcommand\jgr{J.~Geophys.~Res.}% 
+          % Journal of Geophysics Research 
+\newcommand\jqsrt{J.~Quant.~Spec.~Radiat.~Transf.}% 
+          % Journal of Quantitiative Spectroscopy and Radiative Trasfer 
+\newcommand\memsai{Mem.~Soc.~Astron.~Italiana}% 
+          % Mem. Societa Astronomica Italiana 
+\newcommand\nphysa{Nucl.~Phys.~A}% 
+          % Nuclear Physics A 
+\newcommand\physrep{Phys.~Rep.}% 
+          % Physics Reports 
+\newcommand\physscr{Phys.~Scr}% 
+          % Physica Scripta 
+\newcommand\planss{Planet.~Space~Sci.}% 
+          % Planetary Space Science 
+\newcommand\procspie{Proc.~SPIE}% 
+          % Proceedings of the SPIE 
+\let\astap=\aap 
+\let\apjlett=\apjl 
+\let\apjsupp=\apjs 
+\let\applopt=\ao 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

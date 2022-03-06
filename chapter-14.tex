@@ -1,0 +1,107 @@
+\chapter{Winds}
+
+\section{Why Diagnostics Are Important}
+
+\begin{itemize}
+
+\item Mass loss (\Mdot). Can be important for evolution of stars. An O star can lose a significant fraction of its mass through its wind during its lifetime. Note that conventionally $\Mdot \equiv -dM/dt$, so that mass loss corresponds to a positive \Mdot. The Sun has $\Mdot \approx  10^{-14}$ solar masses per year, so will lose only a small fraction of its mass over its lifetime. A massive star can have $\Mdot \sim 10^{-6}$ solar masses per year, and can lose $\sim 10$ solar masses or more over its lifetime.
+
+\item Wind luminosity. The wind injects a  kinetic energy into the ISM at a rate $\Mdot \vinf^2/2$. This is know as the wind luminosity. It is important in the formation of bubbles around massive stars.
+
+\item Different theories predict different values of $\Mdot$ and $\vinf$. We can use measurements of these to discriminate between theories.
+
+\end{itemize}
+
+\section{Equation of Mass Continuity}
+
+In a steady state and with spherical symmetry, we have $\Mdot = 4\pi r^2 \rho(r) v(r)$. Thus, if these apply, if we can measure $\Mdot$ and $v(r)$, we can obtain $\rho(r)$.
+
+\section{Velocity Laws}
+
+We often assume that the velocity follows the `$\beta$-law''
+$$
+v(r) = v_0 + (\vinf - v_0)\left(1 - \frac{R}{r}\right)^\beta.
+$$
+Large values of $\beta$ give more acceleration closer to the star. Hot star winds typically have $\beta \approx 0.8$.
+
+We sometimes approximate the $\beta$-law with
+$$
+v(r) \approx \vinf(1-\frac{r_0}{r})^\beta,
+$$
+with
+$$
+r_0 \equiv R\left[1-\left(\frac{v_0}{\vinf}\right)^{1/\beta}\right].
+$$
+This form is easier to integrate. It differs from the previous form close to the star.
+
+\section{Lines}
+
+Resonance line. Recombination Line. Collisional or Photoexcitation. Pure absorption. See Fig 2.2 of Lamers \& Cassinelli.
+
+See P Cygni profiles in Figure 2.3 of LC.
+
+Most P Cygni profiles are formed by resonance lines. Table 2.1 of LC.
+
+Resonance lines act like scatterers. Scatterers act like absorbers in front of the star and emitters away from the star. Figure 2.4 in LC. More quantitative, if we have a thin spherical shell with velocity $v$, we will get absorption at $-v$ and emission in a top-hat from (almost) $-v$ to (almost) $+v$. Summing the contributions for all of the shell, we get a P Cygni profile. Fig 2.6 in LC.
+
+It is relatively easy to get {\vinf} from a P Cygni resonance line profile. Just look for the most blue-shifted absorption (and assume that the absorption extends far enough out into the wind to have reached {\vinf}). By more detailed modelling of the whole profile, you can also restrict the velocity law.
+
+Another usefil diagnistic comes from recombination lines. Unless these are also resonance lines (e.g., Ly$\alpha$) typically do not have an absorption component, just an emission component, as there are very few atoms in the lower state.
+
+The emissivity here is proportional to $n_in_e$ or, if the ionization fraction is constant, $\rho^2$. For example,
+$$
+j_\mathrm{H\alpha} = 3.6 \times 10^{-25} n_e n_p (T/10^4)^{-0.96}
+$$
+in cgs units. The emission from an optically thin line is thus
+$$
+L_l = int_R^\infty 4\pi r^2 j_l(1-W(r)),dr
+$$
+in which $W(r)$ is the ``geometrical dilution factor'' defined to be the fraction of $4\pi$ steradians covered by the star. It is
+$$
+W(r) = \frac{1}{2}\left[1-\sqrt{1-(R/r)^2}\right].
+$$
+We define a normalized radius $x \equiv r/R$ and the normalized velocity law $w(x) \equiv v(Rx)/\vinf$. If the normalized velocity law is identical, then we can show that
+$$
+L_l \propto \frac{\Mdot^2}{R \vinf^2}.
+$$
+Thus, if we can measure $L_l$ and $\vinf$ and if we assume $R$, then we can measure $\Mdot$.
+
+We have assumed that the lines are locally optically thin. This will be the case provided the velocity gradient is large enough compared to the thermal width and the line opacity. Show Figure 2.8 from LC.
+
+One problem with mass loss rates from recombination lines is that the emissivity per unit mass is proportional to the density. Thus, clumps in the wind contribute more per unit mass than on average. This can lead to an overestimation of the mass-loss rate.
+
+\section{IR and Radio Excess}
+
+An ionized wind has an opacity due to free-free interactions between electrons and ions (Bremsstrahlung). This leads to winds being optically thick at IR and radio wavelengths. The volumetric opacity is proportional to $\nu^{-2}$ and so increases to lower frequency. Thus, at longer wavelengths, the photosphere is larger. In a constant temperature wind. we expect
+$$
+F_\nu \propto B_\nu(T) r(\tau=1/3)^2
+$$
+Now, $B_\nu \propto nu^2$ in the R-J tail. In the radio, the wind is sufficiently opaque that it is optically thick in the outer part of the wind where the velocity in constant (and so density i proportional to $r^{-2}$), and we can show that $r(\tau)\propto\nu^{-2/3}$. Then, we have
+$$
+F_\nu \propto \nu^{2/3}.
+$$
+This excess appears above the $\nu^2$ R-J tail.
+
+The normalization of the flux is proportional to 
+$$
+(\frac{\Mdot}{\vinf})^{4/3}.
+$$ 
+Thus, once we have measured $\vinf$ and the radio excess, we have $\Mdot$.
+
+We can also measure the excess in the IR region. However, here, the wind becomes optically thick closer to the star where the velocity is not constant. In order to predict the mass-loss rate, we need a good understanding of the velocity law.
+
+\section{Cool Stars}
+
+Here we use lines of CO, particularly the $\Delta J = -1$ rotational lines at 2.6 mm and the $\Delta J = -2$ rotational lines at 1.3 mm.
+
+The profiles typically have FW of 20--50 km/s, so the winds have $\vinf$ of 10--25 km/s.
+
+CO is a very stable molecule. Therefore, in O-rich stars, almost all of the C is in CO, and in C-rich stars, almost all of the O is in CO. In either case, the density of CO is proportional to the mass density. The emission comes from the outer part of the wind, were the velocity is constant. Thus, the mass in a shell is proportional to the thickness of the shell. We then have
+$$
+L = A_\mathrm{ul} h\nu (n_{CO}/\rho) M_\mathrm{wind} \frac{g_u}{g_l}e^{-E_{ul}/kT_{ex}}
+$$
+Unfortunately, because of IR pumping, CO is not always in LTE. One needs to look at several lines in order to check this.
+
+Note that this does not give $\Mdot$ but rather $M_\mathrm{wind}$. However, if we can estimate the time the wind has been blowing (e.g., from considerations of stellar evolution), we can convert this using $\Mdot = M_\mathrm{wind}/t_\mathrm{wind}$.
+
+We can also estimate the mass in the wind of a cool star by looking at the dust emission. This is normally optically thin. However, we need to understand the dust temperature (since the flux is proportional to the temperature) and the conversion from dust mass to total mass (typically 100-200).

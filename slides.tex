@@ -1,0 +1,84 @@
+% $Id: main.tex 81 2008-10-03 15:54:28Z Alan $
+
+\documentclass[10pt]{report}
+
+\newif\ifoutputbook
+\outputbookfalse
+\newif\ifoutputslides
+\outputslidestrue
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[a5paper,landscape]{geometry}
+
+%: includes
+
+\includeonly{
+%  cover,
+%  front-matter,
+%  preface,
+%  chapter-1,
+%  chapter-2,
+  chapter-3,
+%  chapter-4,
+%  chapter-5,
+%  chapter-6,
+%  chapter-7,
+%  chapter-8,
+%  chapter-9,
+%  chapter-10,
+%  chapter-11,
+%  chapter-12,
+  appendix-a,
+  appendix-b,
+  appendix-c,
+%  end-matter,
+%  index
+}
+
+\input style.tex
+
+\begin{document}
+
+\svnInfo $Id: main.tex 81 2008-10-03 15:54:28Z Alan $
+
+\pagenumbering{roman}
+\pagestyle{empty}
+
+\include{cover}
+
+\pagestyle{plain}
+\include{front-matter}
+
+\include{preface}
+
+%\pagestyle{headings}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\include{chapter-1}
+\include{chapter-2}
+\include{chapter-3}
+\include{chapter-4}
+\include{chapter-5}
+\include{chapter-6}
+\include{chapter-7}
+\include{chapter-8}
+\include{chapter-9}
+\include{chapter-10}
+\include{chapter-11}
+\include{chapter-12}
+
+\appendix
+
+\include{appendix-a}
+\include{appendix-b}
+\include{appendix-c}
+
+\include{end-matter}
+
+%\include{index}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,198 @@
+% $Id: chapter-3.tex 49 2008-09-09 23:13:36Z Alan $
+%!TEX root = main.tex
+
+\svnInfo $Id: chapter-3.tex 49 2008-09-09 23:13:36Z Alan $
+
+\chapter{Simplifying Approximations}
+
+\noindent
+In this chapter we will introduce a number of widely-used approximations that can simplify considerably the solution of the equation of radiation transfer in atmospheres.
+
+\section{Coherent and Isotropic Scattering}
+
+Scattering is easy to incorporate into extinction -- we simply include
+its contribution to the extinction coefficient -- but a general
+treatment of the scattered emissivity is somewhat
+involved; \citet[p.\ 5]{Schuster-1905}, in his pioneering
+investigation of scattering in stellar atmospheres, notes that ``the
+complete investigation leads to equations of such complexity that a
+discussion becomes impossible''.
+
+Given this, we  will make two
+simplifying assumptions. First, we will assume that the scattering is
+coherent, so that the scattering does not change the frequency of the
+photon. Second, we will assume that the scattering is isotropic, so that
+photons are emitted with equal probability into all directions. Under
+these assumptions, the energy removed from the radiation field by
+scattering in a volume $dV$, a frequency interval $(\nu,\nu+d\nu)$, and
+a time interval $(t,t+dt)$ must be equal to the energy added to the
+radiation field by scattering in the same volume $dV$, the same
+frequency interval $(\nu,\nu+d\nu)$, and the same time interval
+$(t,t+dt)$. From the definition of the extinction coefficient and the
+emissivity, we then have
+\begin{align}
+\int_{4\pi}\!\!\!d\Omega\:
+\sigma I_\nu
+&=
+\int_{4\pi}\!\!\!d\Omega\:
+j_\nu^\mathrm{s}\\
+4\pi\sigma J_\nu
+&=
+4\pi j_\nu^\mathrm{s}.
+\end{align}
+Thus, the scattered emissivity is given by
+\begin{align}
+j_\nu^\mathrm{s} = \sigma J_\nu.
+\end{align}
+
+\section{Local Thermodynamic Equilibrium}
+
+In general, to determine the true emissivity $j_\nu^{e}$ and the
+absorption coefficient $\alpha$, we need to determine the state of
+matter in the atmosphere. As we will see, this is often quite difficult
+because of the coupling between radiation and matter. For this reason,
+we often make adopt the simplifying assumption of local thermodynamic
+equilibrium (LTE).
+
+In perfect thermodynamic equilibrium, we have detailed balance in all
+processes. Detailed balance means that the rate of a process and its
+inverse are equal, and follows from the symmetry of the laws of
+microscopic physics under time reversals. If we consider absorption and
+emission, in perfect thermodynamic equilibrium  we have
+\begin{align}
+j_\nu^\mathrm{e} = \alpha I_\nu.
+\end{align}
+However, we also have that $I_\nu = B_\nu$, and so we derive Kirchoff's
+law, that in perfect thermodynamic equilibrium
+\begin{align}
+j_\nu^\mathrm{e} = \alpha B_\nu(T).
+\end{align}
+It's important to remember that is true only in perfect thermodynamic
+equilibrium, and that stellar atmospheres are \emph{not} in perfect
+thermodynamic equilibrium (as witnessed by, for example, the flow of
+energy with them).
+
+In the approximation of local thermodynamic equilibrium (LTE), we assume
+that the matter has thermodynamic equilibrium properties at the local
+temperature and density but the radiation does not. In particular, the
+velocities of particles is assumed to be given by the Maxwell
+distribution, the abundances of chemical species is assumed to be given
+by the Saha distribution, and the populations of energy levels is
+assumed to be given by the Boltzmann distribution, but we do \emph{not}
+assume that the specific intensity is given by the Planck function. The
+emissivity and extinction coefficient are determined by the state of
+matter, so Kirchoff's law will still apply in LTE, and we still have
+\begin{align}
+j_\nu^\mathrm{e} = \alpha B_\nu(T).
+\end{align}
+It is vital to remember that these results are not true in general; in
+order to obtain them, we had to assume LTE. Radiation emitted by matter
+in LTE (or, more accurately, matter that is well-approximated by the LTE
+approximation) is known as thermal radiation.
+
+LTE significantly simplifies the solution of the equation
+transfer, in that it reduces the state of matter at each
+point to two variables -- the temperature and the density.
+Nevertheless, the problem is still complicated, as the
+temperature is determined by the interaction of radiation
+with matter.
+
+Note that LTE is an internally inconsistent approximation;
+the occupation numbers will only have their true thermal
+equilibrium values if the temperature is uniform and the
+radiation field isotropic and Planckian. Both of these
+requirements are violated in stellar atmospheres, in which
+we often have large temperature gradients and in which the
+radiation field is sharply peaked in the outward direction
+and is non-Planckian. The LTE approximation in not too bad
+for the velocity distribution of particles; collisions are
+sufficiently frequent to maintain a single-temperature
+Maxwellian distribution. However, it is much worse for the
+ionization and excitation distributions. To be fully consistent, we would
+have to adopt a completely non-LTE approach and directly
+model the processes that create and destroy chemical species
+and populate and depopulate energy levels. We will use this
+approach in the later parts of this book, but for the
+meantime we will adopt the LTE approximation.
+
+In LTE we have $j_\nu^\mathrm{e} = \alpha B_\nu$, and so in general
+the source function is 
+\begin{align}
+S_\nu \equiv \frac{j_\nu}{\chi} = \frac{\alpha B_\nu + j_\nu^\mathrm{s}}{\alpha + \sigma}.
+\end{align}
+Two important special cases of this are the absence of scattering, which
+has $j_\nu^\mathrm{s} = 0$ and
+\begin{align}
+S_\nu = B_\nu,
+\end{align}
+and coherent, isotropic scattering, which has $j_\nu^\mathrm{s} =
+\sigma J_\nu$ and 
+\begin{align}
+S_\nu = \frac{\alpha B_\nu + \sigma J_\nu}{\alpha +
+\sigma}.
+\label{equation-lte-and-coherent-and-isotropic-scattering}
+\end{align}
+
+\section{Radiative Equilibrium}
+
+Stellar atmospheres are often assumed to be in
+thermal equilibrium. By this we mean that the temperature at a given point is constant in time,
+\begin{align}
+\frac{\partial T(\vec r)}{\partial t} = 0.
+\end{align}
+In the plane-parallel approximation, this requires
+that the total flux of energy be conserved throughout the atmosphere. A
+special case of thermal equilibrium is \emph{radiative equilibrium}, in
+which the flux of energy is carried entirely by radiation. In this case, in the
+plane-parallel approximation, $F$ is constant throughout the atmosphere,
+or in other words $dF/dz = 0$. The same radiative flux is found
+entering the atmosphere from below, leaving it to above, and in all
+intermediate layers.
+
+The constancy of $F$ is a global statement of the condition of radiative
+equilibrium in a plane-parallel atmosphere. We can also devise a local
+statement: that the radiative energy absorbed in a small volume must be
+equal to the radiative energy emitted by the same volume. If this were
+not the case, the volume would suffer a net gain or loss of energy and
+would rise or fall in temperature. From the definition of the extincion
+coefficient, we can see that the total radiative heating rate per unit
+volume is
+\begin{align}
+\int_0^\infty\!\!\!dv
+\int_{4\pi}\!\!\!d\Omega
+\chi I_\nu
+=
+4\pi
+\int_0^\infty\!\!\!dv
+\chi J_\nu,
+\end{align}
+where in substituting $J_\nu$ we have assumed that $\chi$ is
+isotropic. Similarly, from the definition of the emissivity, the total
+radiative cooling rate per unit volume is
+\begin{align}
+\int_0^\infty\!\!\!dv
+\int_{4\pi}\!\!\!d\Omega\:
+j_\nu = 4\pi \int_0^\infty\!\!\!dv\: j_\nu,
+\end{align}
+where again we have assumed that $j_\nu$ is isotropic.
+In radiative equilibrium, we have the local condition
+\begin{align}
+\int_0^\infty\!\!\!dv\:
+\chi J_\nu
+=
+\int_0^\infty\!\!\!dv\: j_\nu.
+\end{align}
+Note that in deriving the local condition we have not made any
+assumption about the geometry of the atmosphere. Thus, the local
+condition holds in any atmosphere in radiative equilibrium, whereas the
+global condition that $F$ is constant is true only for a plane-parallel
+atmosphere in radiative equilibrium. For example, in a spherically
+symmetric atmosphere in radiative equilibrium, $F$ drops as $1/r^2$.
+
+At first glance, it seems odd that in a plane-parallel atmosphere we
+have two statements of the condition for radiative equilibrium:
+$dF/d\tau = 0$ and $\int_0^\infty\!\!\!dv\:
+\chi J_\nu
+=\int_0^\infty\!\!\!dv\: j_\nu$. However, as we might expect, the
+two are equivalent, and each implies the other. This is explored in
+Problem~\ref{problem-radiative-equilibrium}.

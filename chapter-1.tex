@@ -1,0 +1,96 @@
+\chapter{Introduction}
+\label{chapter:introduction}
+
+\noindent
+In this chapter, we will define the subject of this book and addressing its context.
+
+\newslide
+\section{The Parts of a Star}
+
+We will start by defining clearly what we mean by a stellar atmosphere and, along the way, the other parts of a star. We might start by looking for inspiration in the atmosphere of the Earth, which we might define as:
+\begin{enumerate}
+    \item a gaseous layer,
+    \item bound gravitationally to the planet, and
+    \item limited below a phase change to solid or liquid (i.e., land or ocean).
+\end{enumerate}
+We see this definitions has three components: an identification of the phase of the matter in the atmosphere, an upper limit, and a lower limit. The lower limit seems quite clear. The upper limit need more consideration, since there is gradual transition from particles that are bound to the Earth to unbound particles that are part of the solar wind. A widely accepted convention is to place the upper limit at the point at which the force due to the gravity of the Earth is equal to the force due to solar radiation, but a faithful consideration of the upper atmosphere needs to account for the transition.
+
+\newslide
+
+This definition needs some modification to be useful in stars. We can take over two of the three physical concepts quite nicely, and say that a stellar atmosphere is also a gaseous layer and is also gravitationally bound, in this case to the star. However, normal stars do not contain phase changes analogous the the gas-solid or gas-liquid boundaries we see on the Earth, and instead are completely gaseous. (Some stars do contain minor phase changes, such as the onset of degeneracy, but these are typically not considered as dramatic as the familiar terrestrial phase changes and, anyway, are not present in all stars.) However, we can work from the idea that the atmosphere of a star is \emph{the part of the star we can see} and this is because \emph{it emits photons that escape}. More precisely, we will distinguish between a stellar atmosphere and the underlying stellar interior by stating that in the atmosphere the probability that photons can escape from the star is not negligible, whereas in the interior it is negligible.
+
+So, to complete this new definition, we will consider a stellar atmosphere to be:
+\begin{enumerate}
+    \item a gaseous layer,
+    \item bound gravitationally to a star, and
+    \item in which the probability that radiation can escape directly is not negligible.
+\end{enumerate}
+
+We now have smooth transitions at both limits. At its upper limit, a stellar atmosphere will merge smoothly into the unbound stellar wind, somewhat like the transition of the Earth's atmosphere into the solar wind. At its lower limit, a stellar atmosphere will merge smoothly into the stellar interior, since as we shall see the probability of escape varies smoothly with depth, so there is no single point above which all photons escape and below which no photons escape. 
+
+\newslide
+
+Having defined the lower limit in terms of the escape of photons, we could return to the upper limit and rephrase it in a similar way in terms of the escape of matter. That is, we could consider being gravitationally bound or unbound as equivalent to the probability that matter can escape being negligible or not negligible. We don't normally do this, but it does contain an insight into the underlying physics.
+
+\newslide
+
+Although it's not especially relevant for atmospheres, for completeness we can further divide the interior into the envelope and core according to whether nuclear reactions are occurring or have occurred in the matter. Figure~\ref{fig-parts-of-a-star} summarizes the division of a star into the wind, atmosphere, envelope, and core.
+
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+    
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[
+  terminal/.style={rectangle, draw, text width=6em, text badly centered, rounded corners, minimum height=2em},
+  decision/.style={diamond, draw, text width=6em, aspect=2, text badly centered},
+  line/.style={draw,->}
+ ]
+\begin{scope}
+\small
+  \node at (0,0) [terminal] (start) {start};
+  \node at (0,-3) [decision] (bound) {Is matter gravitationally bound?};
+  \node at (0,-6) [decision] (escape) {Can photons escape?};
+  \node at (0,-9) [decision] (reactions) {Have nuclear reactions  occurred?};
+  \node at (4,-3) [terminal] (wind) {wind};
+  \node at (4,-6) [terminal] (atmosphere) {atmosphere};
+  \node at (4,-9) [terminal] (envelope) {envelope};
+  \node at (4,-12) [terminal] (core) {core};
+  \path [line] (start) -- (bound);
+  \path [line] (bound) -- node [near start,anchor=south] {No} (wind);
+  \path [line] (bound) -- node [near start,anchor=west] {Yes} (escape);
+  \path [line] (escape) -- node [near start,anchor=south] {Yes} (atmosphere);
+  \path [line] (escape) -- node [near start,anchor=west] {No} (reactions);
+  \path [line] (reactions) -- node [near start,anchor=south] {No} (envelope);
+  \path [line] (reactions) |- node [near start,anchor=west] {Yes} (core);
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\caption{A flow chart for identifying the parts of a star.}
+\label{fig-parts-of-a-star}
+\end{figure}
+
+
+\newslide
+\section{The Importance of Atmospheres}
+
+Atmospheres are important in astronomy and astrophysics in three main ways.
+
+\newslide
+
+First, most of what we know about stars we learn by studying the radiation that escapes from their atmospheres. For example, we use photometry to measure the atmospheric flux, spectroscopy to measure atmospheric absorption and emission lines and other features, direct imaging of the atmosphere of the Sun, and interferometry to image the atmospheres of other stars. Other means include neutrinos (detected to date only from the Sun), gravitational waves (detected to date only in the fusion of compact stellar remnants), in situ measurments of the properties of matter in the solar wind (again, only for the sun), and stellar pulsations (albeit modulated by their impact on the atmospheres), and these provide unique information on a small number of stars. For the overwhelming majority of stars, we have only the light that escapes the atmosphere. 
+
+Stars are interesting per se, but they also have vital roles on other areas of astronomy. For example, heating and ionizing the ISM, making up most of the luminous mass of galaxies, and producing chemical elements. I don't think its too much of an overstatement to say that without an understanding of stars, gained largely from studying their atmospheres, our understanding of all other areas of astronomy would be primitive.
+
+\newslide
+
+Second, a stellar atmosphere largely defines the transition between the stellar interior and the surrounding largely empty space. (The stellar wind, being unbound, typically has only a negligible direct influence on the interior.) Thus, the atmosphere has a direct impact on the structure and hence the evolution of a star.
+
+\newslide
+
+Third, in undergraduate physics, radiation is typically a passive component; if it appears, is is typically assumed to be produced by matter emitting as a black body and whose temperature is determined by some other process. In astrophysics, radiation is an active component, and the interplay between radiation and matter often determines the thermodynamic state of the matter. This is certainly the case for stellar atmospheres, but it is also a common occurrence in the interstellar medium, in circumstellar material, and in matter in the vicinity of a black hole.  Thus, the relevance of this course is that we will use stellar atmospheres as a laboratory for learning the physics of the interaction of matter and radiation, and then be able apply it in other areas of astrophysics.
+
+%\section{Notes and Further Reading}

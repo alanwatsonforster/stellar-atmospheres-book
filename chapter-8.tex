@@ -1,0 +1,137 @@
+% $Id: chapter-8.tex 78 2008-09-30 01:24:40Z Alan $
+%!TEX root = main.tex
+
+\svnInfo $Id: chapter-8.tex 78 2008-09-30 01:24:40Z Alan $
+
+\chapter{LTE Atmospheres}
+
+\section{Summary of the Physics}
+
+We are now in a position to summarize the physics of a stellar atmosphere under the assumptions of plane-parallel geometry, hydrostatic equilibrium, radiative equilibrium, local thermodynamic equilibrium, and coherent and isotropic scattering. We need to solve self-consistently the following equations. 
+
+\newslide
+
+\begin{enumerate}
+\item The equation for hydrostatic equilibrium
+\begin{align}
+\frac{dP}{dz} = -\rho g,
+\end{align}
+with the equation of state for an ideal gas
+\begin{align}
+P = \frac{\rho k T}{\mu m_\mathrm{H}}
+\end{align}
+and the definition of $\mu$
+\begin{align}
+\mu m_\mathrm{H} \equiv n_e m_e + \sum_k n_k m_k,
+\end{align}
+in which the index $k$ extends over all atoms, ions, and molecules.
+\item The equation of radiative equilibrium,
+\begin{align}
+\frac{dH}{dz} &= 0.
+\end{align}
+\item 
+The Schwarzschild and Milne equations for $J_\nu$ and $H_\nu$ in terms of $S_\nu$,
+\begin{align}
+J_\nu(\tau) &= \Lambda_1(S_\nu)\\
+\intertext{and}
+H_\nu(\tau) &= \Lambda_2(S_\nu).
+\end{align}
+\item 
+The equation for the source function under the assumptions of local thermodynamic equilibrium and coherent and isotropic scattering,
+\begin{align}
+S_\nu = \frac{\alpha B_\nu + \sigma J_\nu}{\alpha + \sigma}.
+\end{align}
+\item
+The absorption and scattering coefficients
+\begin{align}
+\alpha &= \sum_i n_i a_\alpha
+\intertext{and}
+\sigma &= \sum_i n_i a_\sigma
+\end{align}
+\item Finally, the ionization distribution, excitation distribution, and electron density from the Saha and Boltzmann equations and conservation of nuclei and electrons
+\begin{align}
+\frac{n_{j+1,k}}{n_{j,k}} &= \frac{2}{n_e}\left(\frac{2\pi k T m_e}{h^2}\right)^{3/2}\frac{U_{j+1,k}}{U_{j,k}}e^{-\chi_{jk}/kT},\\
+\frac{n_{ijk}}{n_{jk}} &=\frac{g_{ijk}}{U_{jk}}e^{-E_{ijk}/kT}\\
+n_k &= x_k \frac{\rho}{\sum x_k m_k}\\
+n_e &= \sum_{j,k} j n_{jk}.
+\end{align}
+\end{enumerate}
+
+\newslide
+The boundary conditions are typically no incident radiation for $\tau = 0$, $P = 0$ for $\tau = 0$, and that we must recover the diffusion approximation for large $\tau$. 
+
+\newslide
+We can identify the following parameters of the problem
+\begin{enumerate}
+\item The effective temperature $\Teff$, which defines the flux through the atmosphere.
+\item The surface gravity $g$.
+\item The composition defined by the set of values of $x_k$.
+\end{enumerate}
+
+This set of equation is just about the simplest non-trivial set applicable to an atmosphere. We can see how we can extend the physics, perhaps by including the convective flux to generalize radiative equilibrium to thermal equilibrium and perhaps by including the pressure from radiation in the equation of state.
+
+\newslide
+
+\section{Solution}
+
+While we can write the equations for an LTE atmosphere on a single page, their solution presents two problems.
+
+First, we need a mass of atomic data: $E_{ijk}$, $g_{ijk}$, $\chi_{jk}$, $a_\alpha$, and $a_\sigma$. While we have analytic values for single-electron atoms, the most important sources of opacity in cool stars are often multi-electron atoms such as Fe. Here, we must use numerical models for atoms, checked against laboratory and astrophysical measurements, but our models apparently still have deficiencies.
+
+Second, we need a numerical algorithm to solve these coupled equations efficiently. Fortunately, we now indeed have efficient iterative algorithms and can to a large degree treat this as a solved problem.
+
+\newslide
+
+\section{Models and Fluxes}
+
+We distinguish calculating for a \emph{model} and calculating a \emph{flux}. A model is the variation in the physical variables that define the start of matter, $\rho$ and $T$, as a function of $z$. (Sometimes for convenience we include secondary variables, such as the particle density, electron density, or mean molecular mass.) The idea is that from these, we can calculate any other property of the matter or radiation without having to iterate. In particular, we can calculate the emergent flux $H_\nu(0)$ or $F_\nu(0)$.
+
+We make this distinction because we often solve for the model using a simplified opacity model (for example, we might not include line profiles in detail), but often want to use a more sophisticated opacity model when we calculate the emergent flux (continuing the previous example, perhaps including line profiles in detail).
+
+\newslide
+
+\section{Kurucz Models}
+
+One of the commonest set are the ATLAS models and fluxes, published since the 1970s with increasingly complete atomic data by Robert Kurucz and more recently by Fiorella Castelli. They are available at:
+
+\begin{itemize}
+\item \url{http://kurucz.harvard.edu/}
+\item \url{http://wwwuser.oats.inaf.it/castelli/}
+\end{itemize}
+
+Example emergent fluxes are shown in Figure~\ref{figure:atlas}.
+
+These models have two additional parameters, beyond the standard $\Teff$, $\log g$, and composition. The first is the mixing length parameter $l/H$, which is the key parameter in the mixing-length theory for convective energy transport and is important in cooler stars. The second is the micro-turbulent velocity $v_\mathrm{turb}$, which broadens lines to better match observations.
+
+\begin{figure}
+\footnotesize
+\begin{tikzpicture}
+\begin{axis}[
+   xlabel={$\log \nu$ [Hz]},
+   ylabel={$\log F_\nu$ $[\mathrm{W\,m^{-2}\,Hz^{-1}}]$},
+   ymin=-11,
+   ymax=-3,
+   minor y tick num=3,
+   xmin=13.0,
+   xmax=16.0,
+   minor x tick num=4, 
+]
+\addplot[black] table[x index=0,y index=1]{kurucz/Fnu-fp00t3500g50k0odfnew.dat};
+\addplot[black] table[x index=0,y index=1]{kurucz/Fnu-fp00t4000g50k0odfnew.dat};
+\addplot[black] table[x index=0,y index=1]{kurucz/Fnu-fp00t5000g50k0odfnew.dat};
+\addplot[black] table[x index=0,y index=1]{kurucz/Fnu-fp00t6250g50k0odfnew.dat};
+\addplot[black] table[x index=0,y index=1]{kurucz/Fnu-fp00t7500g50k0odfnew.dat};
+%\addplot[black] table[x index=0,y index=1]{kurucz/Fnu-fp00t8750g50k0odfnew.dat};
+\addplot[black] table[x index=0,y index=1]{kurucz/Fnu-fp00t10000g50k0odfnew.dat};
+%\addplot[black] table[x index=0,y index=1]{kurucz/Fnu-fp00t12500g50k0odfnew.dat};
+\addplot[black] table[x index=0,y index=1]{kurucz/Fnu-fp00t15000g50k0odfnew.dat};
+\addplot[black] table[x index=0,y index=1]{kurucz/Fnu-fp00t20000g50k0odfnew.dat};
+\addplot[black] table[x index=0,y index=1]{kurucz/Fnu-fp00t30000g50k0odfnew.dat};
+\addplot[black] table[x index=0,y index=1]{kurucz/Fnu-fp00t40000g50k0odfnew.dat};
+\addplot[black] table[x index=0,y index=1]{kurucz/Fnu-fp00t50000g50k0odfnew.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{Emergent fluxes for ATLAS9 model atmospheres for $\log g = 5.0$ and $\Teff = 3500$, 4000, 5000, 6250, 7500, 10,000, 15,000, 20,000, 30,000, 40,000, and 50,000 K.}
+\label{figure:atlas}
+\end{figure}
+

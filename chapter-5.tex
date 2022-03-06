@@ -1,0 +1,1170 @@
+% $Id: chapter-4.tex 52 2008-09-11 23:24:41Z Alan $
+%!TEX root = main.tex
+
+\svnInfo $Id: chapter-4.tex 52 2008-09-11 23:24:41Z Alan $
+
+\chapter{Simple Applications of Radiation Transfer}
+
+\section{The Uniform Slab}
+\label{section-uniform-slab}
+
+Perhaps the simplest non-trivial application of the equation of transfer of radiation is calculating the emergent intensity from a uniform slab, such as the one shown in Figure~\ref{fig-uniform-slab}.
+
+\begin{figure*}[b]
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}
+\draw[draw=none,thin,pattern=north west lines](0,0) -- (0,2) -- (4,2) -- (4,0) -- cycle;
+\draw[thick](0,0) -- (0,2) node[above] {$\tau = 0$};
+\draw[thick](4,0) -- (4,2) node[above] {$\tau = T$};
+\draw[->]  (-1,1) -- (-0.5,1) node[above] {$I_{\nu}(0)$} -- (0,1);
+\draw[->] (0,1) -- (2,1) node[above] {$S_\nu$} -- (4,1);
+\draw[->] (4,1) -- (4.5,1) node[above] {$I_{\nu}(T)$} -- (5,1);
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\caption{The geometry of a uniform slab.}
+\label{fig-uniform-slab}
+\end{figure*}
+
+\newslide
+
+\subsection{Statement of Problem}
+
+We wish to calculate the normal emergent intensity of a uniform slab with physical thickness $L$, constant source function $S_\nu$, constant extinction coefficient $\chi$.
+
+\subsection{Solution}
+
+The total optical depth through the slab is $T=\chi L$. We define the incident size of the slab to have $\tau = 0$ and the emergent side to have $\tau = T$. Thus, the incident intensity is $I_\nu(0)$ and the emergent intensity is $I_\nu(T)$.
+
+Substituting into the equation of radiation transfer with $\tau_0 = 0$ and $\tau = T$, we find:
+\begin{align}
+I_\nu(T) = e^{-T} I_\nu(0) + \int_{0}^{T}\!\!dt\,e^{-(T-t)}S_\nu(t).
+\end{align}
+Since $S_\nu$ is constant, it can be taken out of the integral, after which we can integrate to give:
+\begin{align}
+I_\nu(T) = e^{-T} I_\nu(0) + S_\nu (1-e^{-T}).
+\end{align}
+
+\newslide
+
+\subsection{Discussion}
+
+There are a number of interesting special cases of this solution. First, we can consider the \emph{optically thick} limit in which $T\gg1$. In this case, we have
+\begin{align}
+I_\nu(T) \approx S_\nu.
+\end{align}
+So, if the slab is sufficiently thick, the processes of absorption and emission will completely erase any trace of the incident radiation and will replace it with an intensity equal to the source function. If we also have LTE and no scattering, then $S_\nu = B_\nu$ and so:
+\begin{align}
+I_\nu(T) \approx B_\nu.
+\end{align}
+Thus, an optically-thick uniform slab, in LTE and without scattering, will emit as a black body.
+
+Second, we can consider the \emph{optically thin} limit in which $T\ll1$. In this case, we have
+\begin{align}
+I_\nu(T) \approx I_\nu (1- T) + S_\nu T.
+\end{align}
+If there is no incident radiation, then we have
+\begin{align}
+I_\nu(T) \approx S_\nu T = \frac{j_\nu}{\chi} \chi L = j_\nu L.
+\end{align}
+Thus, we see that this case corresponds to ignoring absorption within the slab and only considering emission.
+
+Finally, we consider the case of a absorbing slab in which $S_\nu = 0$. In this case, 
+\begin{align}
+I_\nu(T) \approx e^{-T} I_\nu(0).
+\end{align}
+We sometimes use this as simple mental model for an atmosphere: we think of the the bright incident radiation from the hot lower layers in the atmosphere being absorbed by the cooler upper layers and reduced by a factor $e^{-T}$. This is not an especially precise model, since all layers both absorb and emit. A better mental model is provided by the Eddington-Barbier approximation, considered next.
+
+\newslide
+
+\section{The Eddington-Barbier Relations}
+
+\subsection{Statement of Problem}
+
+We wish to calculate the emergent intensity and flux from a semi-infinite atmosphere radiating into free space in which the source function is linear in the vertical optical depth $\tau$.
+
+\subsection{Solution}
+
+If the source function is linear in $\tau$, that is,
+if
+\begin{align}
+S_\nu(\tau) = a_\nu + b_\nu \tau,
+\end{align}
+we can solve the equation for the emergent intensity
+$I_\nu(0,\mu)$ to obtain the Eddington-Barbier relations for
+the emergent intensity and flux
+\begin{align}
+I_\nu(0,\mu) = a_\nu + b_\nu \mu,
+\end{align}
+or, more concisely,
+\begin{align}
+I_\nu(0,\mu) = S_\nu(\tau = \mu).
+\end{align}
+Placing this approximate result for the emergent intensity
+into the expression for the emergent flux $F_\nu(0)$, we
+obtain
+\begin{align}
+F_\nu(0) = \pi S_\nu(\tau = 2/3).
+\end{align}
+These results are demonstrated in Problem
+\ref{problem-eddington-barbier}.
+
+\newslide
+
+\subsection{Discussion}
+
+The Eddington-Barbier relations are the basis of a very
+useful approximation. If we assume that we can approximate
+the source function by a linear function in $\tau$, that
+is
+\begin{align}
+S_\nu(\tau) \approx a_\nu + b_\nu \tau,
+\end{align}
+then by the Eddington-Barbier relations we have
+\begin{align}
+I_\nu(0,\mu) \approx S_\nu(\tau = \mu),
+\end{align}
+and
+\begin{align}
+F_\nu(0) \approx \pi S_\nu(\tau = 2/3).
+\end{align}
+These approximate results are known as the Eddington-Barbier
+approximations.
+
+It may seem pedantic to distinguish between the
+Eddington-Barbier relations, which are exact results for exactly linear source functions, and
+the Eddington-Barbier approximations, which are approximate results for approximately linear source functions.
+However, it is important to remember that the degree to which 
+the approximate results are good
+depends on the degree to which the underlying approximation about the source function is a
+good approximation.
+
+The Eddington-Barbier approximations are
+extremely useful in considering the qualitative behaviour of
+stellar atmospheres. For example, we often consider that the emergent flux $F_\nu(0)$ is approximately equal to the $\pi S_\nu(\tau = 2/3)$, implicitly adopting the Eddington-Barbier approximation. In LTE and in the absence of scattering, we have $S_\nu = B_\nu(T)$ and so 
+\begin{align}
+F_\nu(0) \approx \pi B_\nu(T(\tau = 2/3)).
+\end{align}
+In many atmospheres, the temperature decreases towards the surface, so deeper laters are hotter. This means that at frequencies with lower opacity we “see” to deeper and hotter layers where $B_\nu$ is larger. Thus, frequencies with lower opacities have larger emergent flux and frequencies with higher opacities have smaller emergent flux. There is, as it were, an approximate reversal between opacity and flux.
+
+Another interesting application of the Eddington-Barbier approximation is in the Sun, in which we can determine
+$I(0,\mu)$ by measuring the emergent intensity of the Sun at
+different angles, i.e., by measuring the emergent intensity
+from the center of its disk ($\mu = 1$) to its limb ($\mu
+\approx 0$). If we then adopt the Eddington-Barbier
+approximation, we can obtain the approximate values of
+$S_\nu$ in the range $0 \le
+\tau \le 1$. If we are prepared to assume LTE and ignore scattering, we can
+relate this directly to the local temperature, because in
+LTE $S_\nu = B_\nu(T)$.
+
+If we combine the LTE approximation with the
+Eddington-Barbier approximation, we can determine the
+temperature in the atmosphere of the Sun from observations
+of the limb darkening, as we have
+\begin{align}
+I_\nu(0,\mu) = S_\nu(\tau = \mu) = B_\nu(T(\tau = \mu)).
+\end{align}
+This can currently only be applied to the Sun, as this is
+the only star for which we have accurate measurements of
+$I(0,\mu)$ (i.e., it is the only star that is well
+resolved). Problem \ref{problem-solar-temperature-structure}
+investigates this in more detail.
+
+\newslide
+
+\section{The Diffusion Approximation}
+\label{chapter-diffusion-approximation}
+
+\subsection{Statement of Problem}
+
+The diffusion approximation is an approximate solution to
+the radiation transfer equation under that assumptions of plane-parallel symmetry, that matter is
+in LTE, scattering is coherent and isotropic, that 
+the temperature gradient $dT/d\tau$ is small, and the optical depth to the surface is large.
+
+These last two assumptions are never satisfied in the atmosphere of a
+star; indeed, the atmosphere is characterised by large
+temperature gradients and by proximity to the surface. 
+However, they
+are very good approximations deep in the star at large
+optical depth. The diffusion approximation is useful for
+modelling the radiative flux or energy in the stellar interior and for
+providing a lower boundary condition for stellar atmosphere
+models.
+
+\newslide
+
+\subsection{Solution}
+
+If we have LTE and coherent and isotropic scattering, we have
+\begin{align}
+\label{equation:diffusion-approximation-source-function}
+S_\nu = \frac{\alpha B_\nu + \sigma J_\nu}{\alpha + \sigma}.
+\end{align}
+Therefore, $S_\nu$ is isotropic.
+We can then expand $S_\nu$ as a
+McLaurin series in $\tau$ to obtain
+\begin{align}
+S_\nu(\tau + t) &=
+\sum_{n=0}^\infty \frac{t^n}{n!}\frac{d^n\!S_\nu}{d\tau^n }
+\end{align}
+If we substitute this into the formal solution for $I_\nu$
+in $0 \le \mu \le 1$, we obtain
+\begin{align}
+I_\nu(\mu) 
+&=
+\int_0^\infty\!\!\!\frac{dt}{\mu}\: 
+e^{-t/\mu}S(\tau+t)\\
+&=
+\sum_{n=0}^\infty \frac{1}{n!}\frac{d^n\!S_\nu}{d\tau^n}
+\int_0^\infty\!\frac{dt}{\mu}\:e^{-t/\mu}t^n.
+\end{align}
+If we make the substitution $x = t/\mu$, we obtain
+\begin{align}
+I_\nu(\mu) 
+=
+\sum_{n=0}^\infty \frac{\mu^n}{n!}\frac{d^n\!S_\nu}{d\tau^n} 
+\int_0^\infty\!\!\!dx\:e^{-x}x^n.
+\end{align}
+The integrals $\int_0^\infty dx\:e^{-x}x^n \equiv \Gamma(n+1)$, are
+pure numbers, and we can obtain their values by induction.
+For $n > 0$ we can integrate $\Gamma(n+1)$ by parts to give
+\begin{align}
+\Gamma(n+1) = \left[-e^{-x}x^n\right]_0^\infty 
++ n
+\int_0^\infty\!\!\!dx\:e^{-x}x^{n-1}.
+\end{align}
+The first term is zero and the second term is just
+$n\Gamma(n)$, so we have
+\begin{align}
+\Gamma(n+1) = n \Gamma(n).
+\end{align}
+Furthermore, we have 
+\begin{align}
+\Gamma(1) = \int_0^\infty dx\:e^{-x} = \left[-e^{-x}\right]_0^\infty = 1.
+\end{align}
+Thus, by induction, 
+\begin{align}
+\Gamma(n+1) = n!.
+\end{align}
+The $\Gamma$ function is one of the common mathematical
+functions of physics; is simply a generalization of the
+familiar factorial function for non-integer arguments. 
+With
+these values of $\Gamma(n+1)$, we obtain for $0 \le \mu \le 1$,
+\begin{align}
+I_\nu(\mu) 
+=
+\sum_{n=0}^\infty \mu^n \frac{d^n S_\nu}{d\tau^n}.
+\end{align}
+The expression for $I_\nu(\mu)$ for $-1 \le \mu \le 0$
+differs only by terms of order $e^{-\tau/\mu}$, which
+tend to zero as $\tau$ becomes larger. Thus, we can use this
+expression as an approximation for $I_\nu$ for all $\mu$, obtaining
+\begin{align}
+\label{equation-i-in-diffusion-approximation}
+I_\nu(\mu) 
+\approx
+\sum_{n=0}^\infty \mu^n \frac{d^n S_\nu}{d\tau^n}.
+\end{align}
+
+Putting this approximation for $I_\mu$ into the definitions of $J_\nu$, we obtain
+\begin{align}
+J_\nu &\approx 
+\frac{1}{2}\int_{-1}^{+1}\!\!\!d\mu\:\sum_{n=0}^\infty \frac{d^n S_\nu}{d\tau^n} \mu^n\\
+&\approx
+\frac{1}{2}\sum_{n=0}^\infty \frac{d^n S_\nu}{d\tau^n} \int_{-1}^{+1}\!\!\!d\mu\:\mu^n\\
+&\approx\frac{1}{2}\sum_{n=0}^\infty \frac{d^n S_\nu}{d\tau^n} \left[\frac{\mu^{n+1}}{n+1}\right]_{-1}^{+1}\\
+&\approx \sum_{n=0}^\infty \frac{1}{2n+1}\frac{d^{2n} S_\nu}{d\tau^{2n}}\\
+&\approx S_\nu + \frac{1}{3}\frac{d^2 S_\nu}{d\tau^2} + \frac{1}{5}\frac{d^4 S_\nu}{d\tau^4}
++ \cdots.
+\end{align}
+Notice that the sum only contains terms in even derivatives of $S_\nu$.
+We now use our assumption that the temperature gradients are small. In this case, 
+to a good
+approximation we can to truncate the series after the
+first term, to give
+\begin{align}
+J_\nu \approx S_\nu.
+\end{align}
+
+We still do not know $S_\nu$. However, if we substitute $J_\nu \approx S_\nu$ into 
+equation \ref{equation:diffusion-approximation-source-function}, we obtain
+\begin{align}
+S_\nu \approx \frac{\alpha B_\nu + \sigma S_\nu}{\alpha + \sigma},
+\end{align}
+which has the solution
+\begin{align}
+S_\nu \approx B_\nu.
+\end{align}
+We now know the source function; it is simply the Plank function at the local temperature.
+
+We can now calculate other useful quantities. For example, the energy flux $F_\nu$ is given by
+\begin{align}
+F_\nu(\tau) 
+&= 
+2\pi \int_{-1}^{+1}\!\!\!d\mu\:\mu I_\nu\\
+&\approx 
+2\pi
+\sum_{n=0}^\infty \int_{-1}^{+1}\!\!\!d\mu\:\mu^{n+1}
+ \frac{d^n\!S_\nu}{d\tau^n}\\
+&\approx 
+2\pi
+\sum_{n=0}^\infty \frac{d^n\!B_\nu}{d\tau^n}
+\left[\frac{\mu^{n+2}}{n + 2}\right]_{-1}^{+1}\\
+&\approx
+4\pi \sum_{n=0}^\infty \frac{1}{2n + 3} \frac{d^{2n+1}B_\nu}{d\tau^{2n+1}}\\
+&\approx
+\frac{4\pi}{3} \frac{dB_\nu}{d\tau} + \frac{4\pi}{5} \frac{dB^3_\nu}{d\tau^3} + \ldots.
+\end{align}
+Again, since $dB_\nu/d\tau$ is small, we can ignore all but the leading term and obtain
+\begin{align}
+F_\nu(\tau) 
+&\approx
+\frac{4\pi}{3} \frac{dB_\nu}{d\tau} 
+\end{align}
+If we use the chain rule, we can write
+\begin{align}
+\frac{dB_\nu}{d\tau}
+&=
+\frac{dB\nu}{dT}\frac{dT}{dz}\frac{dz}{d\tau}\\
+&= - \frac{1}{\chi} \frac{dB\nu}{dT} \frac{dT}{dz},
+\end{align}
+and so obtain
+\begin{align}
+F_\nu(\tau)
+&=
+-\left[\frac{4\pi}{3} \frac{1}{\chi} \frac{dB_\nu}{dT}\right]\frac{dT}{dz} .
+\end{align}
+If we integrate over all frequencies, we obtain
+\begin{align}
+F 
+&=
+-
+\left[
+\frac{4\pi}{3} \int_0^\infty\!\!\!d\nu \frac{1}{\chi} \frac{dB_\nu}{dT}\right]
+\frac{dT}{dz} \\
+&= -\left[\frac{4\pi}{3} \frac{1}{\chiR} \frac{dB}{dT}\right]\frac{dT}{dz},
+\end{align}
+where the Rosseland mean opacity $\chiR$ is
+defined by
+\begin{align}
+\frac{1}{\chiR} \frac{dB}{dT}
+\equiv 
+\int_0^\infty\!\!\!d\nu \frac{1}{\chi} \frac{dB_\nu}{dT}.
+\end{align}
+This equation has the form of a diffusion equation,i.e.,
+\begin{align}
+\mbox{flux} = - \mbox{diffusion coefficient} \times
+\mbox{gradient}.
+\end{align}
+From this the term ``diffusion approximation'' is derived.
+
+%\subsection{Justification of Assumptions}
+
+%We'll now return to justify the assumptions we made in the
+%diffusion approximation. The first of these was that LTE was
+%a good approximation and the second was that
+%$B_\nu/\tau$ was small.
+
+%For LTE to be a good approximation, we require that $I_\nu
+%\approx B_\nu$.
+%Equation \ref{equation-i-in-diffusion-approximation} shows that $I_\nu$
+%is different from $B_\nu$ by terms which depend on $B_\nu/\tau$.
+%Thus, if our second assumption is a good one, it follows that our first
+%assumption is also good.
+
+%We earlier derived an equation for the flux $F_\nu$ in terms
+%of the gradient in $B_\nu$.
+%\begin{align}
+%F_\nu = \frac{4 \pi}{3} \frac{dB_\nu}{d\tau}
+%\end{align}
+%If we integrate this over all frequencies, we obtain an
+%equation for the total flux in terms of the gradient in $B$,
+%\begin{align}
+%F = \frac{4 \pi}{3} \frac{dB}{d\tauR}
+%\end{align}
+%Note that $\tau$ has been replaced by the Rosseland mean
+%opacity $\tauR$.
+
+%In radiative equilibrium, the total flux will be constant,
+%so we can integrate this to give
+%\begin{align}
+%B = B_0 + \frac{3}{4\pi} F\tauR
+%\approx \frac{3}{4\pi} F\tauR,
+%\end{align}
+%where we've discarded the constant term because we'll be
+%working with large $\tauR$. Replacing $B$ by
+%$caT^4/4\pi$ and $F$ by $\sigma \Teff^4$, and then using
+%$\sigma \equiv ac/4$, gives
+%\begin{align}
+%T^4 \approx \frac{3}{4} \Teff^4 \tauR.
+%\end{align}
+%The peak of the black-body curve has $\lambda \sim
+%1\:\mathrm{cm\:K} / T$, or $\nu \sim cT/1\:\mathrm{cm\:K}$,
+%and $B_\nu \sim 2 kT \nu^2/c^2$, so
+%\begin{align}
+%B_\nu &\approx \frac{2k}{(1\:\mathrm{cm\:K})^2} T^3\\
+%&\approx \left(\frac{3^{3/4} k}{2^{1/2}
+%(1\:\mathrm{cm\:K})^2}\right) \Teff^3 \tauR^{3/4}
+%\end{align}
+%Thus,
+%\begin{align}
+%\frac{B_\nu}{\tau} &\approx \left(\frac{3^{3/4} k 
+%}{2^{1/2} (1\:\mathrm{cm\:K})^2 }\right) \Teff^3
+%\left(\frac{\tauR}{\tau}\right) \tauR^{-1/4}\\
+%&\approx
+%2.2 \times 10^{-4} 
+%\left(\frac{\Teff}{10^4\:\mathrm{K}}\right)^3
+%\left(\frac{\tauR}{\tau}\right) \tauR^{-1/4}.
+%\end{align}
+%So, provided $\Teff$ is reasonable, $B_\nu/ \tau$ will
+%be small when
+%\begin{align}
+%\tau/\tauR \gg 2.2 \times 10^{-4} \tauR^{-1/4}.
+%\end{align}
+%Provide $\tau/\tauR$ is bounded from below, as it will
+%be by electron scattering, this will eventually hold.
+
+%Note that if not all of the flux is carried by radiation,
+%the temperature gradient will be smaller, and so $B_\nu
+%/ \tau$ will also be smaller.
+
+%\comment{Values of $X$ and $Y$.}
+
+\newslide
+
+\subsection{Quick Solution}
+
+We can quickly obtain the approximate result for the flux in the diffusion approximation by using the Eddington-Barbier approximation.
+First of all, we assume that the gradients are small, so we can approximate $S_\nu$ by the first two terms of the McLaurin expansion, 
+\begin{align}
+S_\nu(\tau+t) \approx S_\nu(\tau) + t \frac{dS_\nu(\tau)}{d\tau}.
+\end{align}
+If we consider a notional surface at $\tau$ bounding the matter from above and use the 
+Eddington-Barbier approximation, we have for $\mu > 0$,
+\begin{align}
+I_\nu(\tau,\mu) 
+&\approx S_\nu(\tau + \mu)\\
+&\approx S_\nu(\tau) + \mu\frac{dS_\nu(\tau)}{d\tau}.
+\end{align}
+For $\mu < 0$, we can again consider a notional surface at $\tau$ bounding the matter from below and assume that $\tau$ is large. Doing so, we obtain the same relation for $I_\nu$. Thus, for all $\mu$,
+\begin{align}
+I_\nu(\tau,\mu) 
+&\approx S_\nu(\tau) + \mu\frac{dS_\nu(\tau)}{d\tau}.
+\end{align}
+We now integrate over angle to obtain $J_\nu$. The term in $\mu$ is odd and cancels, leaving us with
+\begin{align}
+J_\nu = S_\nu
+\end{align}
+Under LTE and with coherent and isotropic scattering, we have
+\begin{align}
+S_\nu \approx \frac{\alpha B_\nu + \sigma J_\nu}{\alpha + \sigma},
+\end{align}
+and substituting for $J_\nu$ we obtain
+\begin{align}
+S_\nu \approx B_\nu.
+\end{align}
+
+We divide the flux into two parts, $+F_\nu^+$ being contributed by rays with $\mu > 0$ and $-F_\nu^-$ being contributed by rays with $\mu < 0$. Thus,
+\begin{align}
+F_\nu = F_\nu^+ - F_\nu^-
+\end{align}
+Again, using the Eddington-Barbier approximation, we have
+\begin{align}
+F_\nu^+ &\approx \pi S_\nu(\tau + 2/3)\\
+&\approx \pi\left[B_\nu(\tau) + \frac{2}{3} \frac{dB_\nu(\tau)}{d\tau}\right]
+\end{align}
+and
+\begin{align}
+F_\nu^- &\approx \pi S_\nu(\tau - 2/3)\\
+&\approx \pi\left[B_\nu(\tau) - \frac{2}{3} \frac{dB_\nu(\tau)}{d\tau}\right].
+\end{align}
+We then have
+\begin{align}
+F_\nu \approx \frac{4\pi}{3} \frac{dB_\nu(\tau)}{d\tau}
+\end{align}
+
+%\subsection{Bibliographic Notes}
+%
+%The framework for the diffusion approximation was developed
+%by \cite{Schwarzschild-1906} in the context of the solar
+%atmosphere and by \cite{Eddington-1916} in the context of
+%stellar interiors, with the correct form of the mean opacity
+%being derived by \cite{Rosseland-1924}. The non-additive
+%nature, investigated in Problem
+%\ref{problem-rosseland-mean-opacity}, was discussed by \cite{Milne-1924}.
+
+\newslide
+
+\subsection{Discussion}
+
+The diffusion approximation is used deep in a star to describe the flow of energy carried by radiation. However, in an atmosphere the optical depth to the surface is not small, and so the diffusion approximation is not valid. If we use the diffusion approximation as a lower boundary condition for an atmosphere, we must place the lower boundary at a depth that is sufficiently large, typically $\tau_R = 10$ to $\tau_R = 20$.
+
+\newslide
+
+\section{The Grey Atmosphere}
+
+\subsection{Statement of Problem}
+
+The problem of the the grey atmosphere consists of solving
+the equations of radiative transfer under the assumptions
+that the opacity is independent of wavelength, the source
+function is isotropic, and the atmosphere is in radiative
+equilibrium. In order to derive the frequency dependence of
+quanties, we shall also later assume LTE.
+
+When a quantity does not depend on wavelength, we say it is
+``grey''. The assumption that the opacity is grey is a good
+approximation for completely ionized gases in which the only
+source of opacity is electron scattering, but is obviously
+less good in partially ionized gases, in which bound-bound
+and bound-free transitions contribute to make the opacity
+non-grey. Nevertheless, the grey atmosphere is a useful
+starting place for interative solutions and a useful
+didactic tool for understanding the qualitative behaviour of
+stellar atmospheres.
+
+\newslide
+
+\subsection{Development of Solution}
+
+The equation of transfer is
+\begin{align}
+\mu \frac{dI_\nu}{d\tau} = I_\nu - S_\nu.
+\end{align}
+Integrating over wavelength gives us,
+\begin{align}
+\mu \int_0^\infty\!\!\!d\nu\:\frac{dI_\nu}{d\tau} = I - S.
+\end{align}
+Since the opacity is grey, the optical depth is grey too. Thus, we can take the derivative with respect to $\tau$ outside of the integral and obtain
+\begin{align}
+\mu \frac{dI}{d\tau} = I - S.
+\end{align}
+
+\newslide
+
+Several useful results can be obtained by considering the
+moments of the integrated radiation transfer equation.
+Taking the first moment gives
+\begin{align}
+M_0(\mu\frac{dI}{d\tau}) &= M_0(I) - M_0(S),\\
+\frac{dM_0(\mu I)}{d\tau} &= J - S,\\
+\frac{dH}{d\tau} &= J-S,
+\end{align}
+in which we have assumed that $S$ is isotropic.
+However, as we have assumed radiative equilibrium, the total
+Eddington flux $H$ must be a constant, so $dH/d\tau = 0$,
+and we have
+\begin{align}
+J = S.
+\end{align}
+We could also have obtained this by considering the local condition for
+radiative equilibrium,
+\begin{align}
+\int_0^\infty\!\!\!d\nu
+\chi J_\nu
+&=
+\int_0^\infty\!\!\!d\nu
+j_\nu,
+\end{align}
+where we can move $\chi$ from one integral to the other, giving $J=S$.
+
+\newslide
+
+This simple relation for the integrated source function is a vital
+simplification, as it allows us to eliminate the source function. The
+Schwarzschild equation, for example, becomes
+\begin{align}
+J = \Lambda_\tau(J),
+\end{align}
+which is a linear integral equation in $J$ only. Despite this
+simplification, direct solution of the Schwarzschild equation is still
+challenging. However, we can obtain the form of the solution by
+considering the first moment of the integrated transfer equation,
+\begin{align}
+M_1(\frac{\mu dI}{d\tau}) = M_1(I) - M_1(S),
+\end{align}
+which, as $S$ is again assumed to be isotropic, simplifies
+to
+\begin{align}
+\frac{dK}{d\tau} &= H.
+\end{align}
+However, since $H$ is constant, we can integrate this
+directly to give
+\begin{align}
+K = H(\tau + c),
+\end{align}
+where $c$ is a constant of integration.
+
+\newslide
+
+Unfortunately, we desire $S$ or
+$J$ rather than $K$. We can relate $K$ and $J$ through the Eddington
+factor $f \equiv K / J$ as
+\begin{align}
+J = K/ f = H (\tau + c) / f,
+\end{align}
+which appears to be nothing more than a recasting of our
+ignorance of $J$ as an ignorance of $f$. However, deep in
+the atmosphere the diffusion approximation will be valid,
+the radiation field will tend to isotropy, and the Eddington
+factor will tend to $1/3$ (see Problem
+\ref{problem-eddington-factor-in-diffusion-approximation}).
+Thus, as $\tau \rightarrow \infty$, $J \rightarrow 3K =
+3H\tau$. This suggests that the $J$ will have the form
+\begin{align}
+J = 3H(\tau + q(\tau)),
+\end{align}
+where $q(\tau)$ remains bounded as $\tau \rightarrow
+\infty$. The function $q(\tau)$ is known as the Hopf function.
+
+
+% Since $3H$ is just a constant, is it clear that $\tau +
+% q(\tau)$ also satisfied the Milne equation,
+% \begin{align}
+% \tau + q(\tau) = \Lambda_\tau(\tau + q(\tau)).
+% \end{align}
+
+
+
+\newslide
+
+\subsection{Eddington Approximate Solution}
+
+One approximate solution for $q(\tau)$ comes from making
+what is known generally as the Eddington approximation: that
+the Eddington factor $f \equiv K/J$ is 1/3 everywhere. (The
+Eddington factor is only exactly 1/3 for an isotropic
+radiation field.) 
+From our expressions for $J$ and $K$, we see that in general
+\begin{align}
+f \equiv \frac{K}{J} = \frac{1}{3} \frac{\tau + c}{\tau + q(\tau)}.
+\end{align}
+The only way that we can have $f = 1/3$ everywhere is if the
+Hopf function $q(\tau)$ is given by
+\begin{align}
+q(\tau) = c.
+\end{align}
+To obtain the value of $c$, we consider the flux at the
+surface. As the Hopf function is constant, $J$ is a linear
+function in $\tau$, and since $J = S$, we can use the
+Eddington-Barbier relation to obtain
+\begin{align}
+F(0) = \pi S(\tau=2/3) = 3\pi H(2/3 + c).
+\end{align}
+However, because of radiative equilibrium, the flux is
+constant and has the value $F = 4\pi H$.
+Thus, 
+\begin{align}
+4\pi H = 3\pi H (2/3 + c),
+\end{align}
+and so $c = 2/3$. With this, we see that the Eddington approximate
+solution is
+\begin{align}
+J = 3H(\tau + 2/3).
+\end{align}
+
+\newslide
+
+The Eddington approximate solution is remarkably good, considering the
+rather crude assumptions from which it stems. As might be expected, it
+is worst close to the surface, where the radiation field becomes forward
+peaked and the Eddington factor $f$ rises above $1/3$. It is easy to
+show that close to the surface the Eddington approximate solution is not
+self-consistent. We can use the source function to calculate
+$I(\tau,\mu)$ and thus $J(\tau)$ and $K(\tau)$. These reveal
+inconsistencies; for that the calculated $J(\tau)$ is not equal to
+$S(\tau)$ and that the calculated Eddington factor is not equal to
+$1/3$. This is demonstrated at the surface in Problem
+\ref{problem-grey-eddington-consistency}. Despite these problems, the
+Eddington approximation is very useful as a tool to understand grey
+atmospheres and as a starting point for more accurate solutions.
+
+\newslide
+
+\subsection{Exact Solution}
+
+\begin{figure}
+\footnotesize
+\begin{tikzpicture}
+\begin{axis}[
+   xlabel={$\log_{10} \tau$},
+   ylabel={$q$},
+   ymin=0.5,
+   ymax=0.8,
+   minor y tick num=3,
+   xmin=-5,
+   xmax=5,
+   minor x tick num=4,
+]
+\addplot[black,dashed] table[x index=0,y index=1]{chapter-5/grey-q.tsv};
+\addplot[black,solid] table[x index=0,y index=2]{chapter-5/grey-q.tsv};
+\end{axis}
+\end{tikzpicture}
+\caption{The value of $q(\tau)$ for the Eddington
+approximate solution (dashed line) and the exact solution
+(solid line).}
+\label{figure-grey-q}
+\end{figure}
+
+The exact solution for $q(\tau)$ was first obtained by \cite{Mark-1947}
+in the context of neutron scattering. There are a variety of approaches
+to and forms of the solution
+(\citealt[ch.\ 4 and 5]{Chandrasekhar-1960}; \citealt[\S27, \S28, and
+\S29]{Kourganoff-1952}; \citealt[ch.\ 3]{Woolley-1953}), but a form that is
+convenient for numerical computation is
+\begin{align}
+q(\tau) = q(\infty) - \frac{1}{2 \sqrt 3} \int_0^1\!\!\!du
+\frac{e^{-\tau/u}}{H(u) Z(u)}
+\end{align}
+where
+\begin{align}
+q(\infty) &=
+\frac{\int_0^1\!du\:H(u)u^2}{\int_0^1\!du\:H(u)u},\\
+H(u) &\equiv
+\frac{\exp
+\left[\frac{1}{\pi}
+\int_0^{\pi/2}\!\!\!d\theta\:
+\frac{\theta\arctan (u \tan\theta)}{1 - \theta \cot\theta}
+\right]}
+{\sqrt{1 + u}},\\
+Z(u) &\equiv \left[1 - \frac{u}{2}\ln \left(\frac{1 + u}{1
+- u}\right)\right]^2 + \frac{1}{4} \pi^2 u^2.
+\end{align}
+The form of this expression for $q(\tau)$ is a strong indication that
+the derivations are anything but trivial. (The function $H(\mu)$ should
+not be confused with the Eddington flux $H$.) Figure
+\ref{figure-grey-q} shows
+the value of $q(\tau)$ for the Eddington approximate
+solution and for the exact solution. Note that most of the
+change in the exact $q(\tau)$ occurs at small optical
+depths, and that the Eddington approximate value for
+$q(\tau)$ lies between the two exact limiting cases of $q(0)
+= 1/\sqrt{3} = 0.577$ and $q(\infty) = 0.710$.
+
+% Taught to here after 14h
+
+\newslide
+
+\subsection{Limb Darkening}
+
+\begin{figure}
+\footnotesize
+\begin{tikzpicture}
+\begin{axis}[
+   xlabel={$\mu$},
+   ylabel={$I(\mu)/I(1)$},
+   ymin=0.3,
+   ymax=1.0,
+   minor y tick num=3,
+   xmin=0,
+   xmax=1,
+   minor x tick num=4,
+]
+\addplot[black,dashed] table[x index=0,y index=1]{chapter-5/grey-limb-darkening.tsv};
+\addplot[black] table[x index=0,y index=2]{chapter-5/grey-limb-darkening.tsv};
+\addplot[black,dotted] table[x index=0,y index=1]{chapter-5/solar-limb-darkening.tsv};
+\end{axis}
+\end{tikzpicture}
+\caption{The observed solar limb darkening (dotted line)
+$I(\mu)/I(1)$ compared to the predictions of the Eddington
+approximate solution to the grey atmosphere (dashed line)
+and the exact solution to the grey atmosphere (solid
+line).}
+\label{figure-grey-limb-darkening}
+\end{figure}
+
+The source function for the Eddington approximate solution
+is linear in $\tau$, so we can also use the
+Eddington-Barbier relation to give the emergent integrated
+intensity,
+\begin{align}
+I(0,\mu) = 3H(\mu + 2/3).
+\end{align}
+Which predicts that the integrated limb darkening is given
+by
+\begin{align}
+\frac{I(0,\mu)}{I(0,1)} = \frac{2/3 + \mu}{2/3 + 1} = \frac{2 + 3
+\mu}{5}.
+\end{align}
+We can't use the Eddington-Barbier relation for the exact
+solution, as the source function is no longer linear in
+$\tau$, but the development of the exact solution gives
+\begin{align}
+\frac{I(0,\mu)}{I(0,1)} = \frac{H(\mu)}{H(1)}.
+\end{align}
+Figure
+\ref{figure-grey-limb-darkening} compares the limb
+darkening for the Sun, for the Eddington approximate solution, and for
+the exact solution. The agreement is perhaps surprisingly good, given
+that the solar atmosphere is certainly not grey. 
+\cite{Schwarzschild-1906} obtained a similarly good agreement between a
+slightly different approximate solution for the grey atmosphere and
+observations, and it was precisely this that lead him to suggest that
+the photosphere of the Sun was in radiative equilibrium rather than
+convective equilibrium.
+
+\newslide
+
+\subsection{Temperature}
+
+\begin{figure}
+\footnotesize
+\begin{tikzpicture}
+\begin{axis}[
+   xlabel={$\tau$},
+   ylabel={$T/\Teff$},
+   ymin=0.6,
+   ymax=1.4,
+   minor y tick num=3,
+   xmin=0,
+   xmax=3,
+   minor x tick num=4,
+]
+\addplot[black,dashed] table[x index=0,y index=1]{chapter-5/grey-temperature.tsv};
+\addplot[black,solid] table[x index=0,y index=2]{chapter-5/grey-temperature.tsv};
+\end{axis}
+\end{tikzpicture}
+\caption{The value of $T(\tau)/\Teff$ for the Eddington
+approximate solution to the grey atmosphere (dashed line)
+and the exact solution to the grey atmosphere (solid
+line).}
+\label{figure-grey-temperature}
+\end{figure}
+
+Until now, we have been working with frequency-integrated
+quantities, such as $F$. To make progress with the
+frequency-dependent quantities, such as $F_\nu$, we need the
+frequency dependence of the source function. This can be
+easily obtained if we are prepared to make the assumption of
+LTE and coherent and isotropic scattering. We then have
+\begin{align}
+S_\nu = \frac{\alpha B_\nu + \sigma J_\nu}{\alpha + \sigma},
+\end{align}
+but since $\alpha$ and $\sigma$ are grey, we can integrate this over frequency to give
+\begin{align}
+S = \frac{\alpha B + \sigma J}{\alpha + \sigma}.
+\end{align}
+We also know that in the grey atmosphere
+\begin{align}
+S = J,
+\end{align}
+and so we have
+\begin{align}
+J = \frac{\alpha B + \sigma J}{\alpha + \sigma}.
+\end{align}
+The solution to this is
+\begin{align}
+S = J = B.
+\end{align}
+Substituting for $S(\tau)$, we find
+\begin{align}
+S(\tau) = 3H(\tau + q(\tau)) = B(\tau) = \frac{\sigma}{\pi} T^4(\tau),
+\end{align}
+and, by the definition of $\Teff$,
+\begin{align}
+H = \frac{F}{4\pi} = \frac{\sigma \Teff^4}{4\pi}.
+\end{align}
+Thus, 
+\begin{align}
+T^4(\tau) = \frac{3}{4} \Teff^4 (\tau + q(\tau)).
+\end{align}
+Figure
+\ref{figure-grey-temperature} shows
+the temperature $T(\tau)$ for the Eddington approximate
+solution and for the exact solution. For $\tau > 1$ the
+difference is small, and both have the same limiting
+behaviour $T \rightarrow (3\tau/4)^{1/4}\Teff$ as $\tau
+\rightarrow \infty$.
+Note this figure illustrates that $\Teff$ is not directly
+related to any real temperature; the temperatures for both
+solutions change with $\tau$, but $\Teff$ is constant with
+$\tau$.
+
+\newslide
+
+\subsection{Flux}
+
+The assumption of LTE gives us $T$ as a function of $\tau$,
+and so can easily calculate the monochromatic source
+function $S_\nu(\tau) = B_\nu(T(\tau))$. We can then
+calculate the monochromatic flux from the Milne equation
+\begin{align}
+H_\nu(\tau) = 
+ \frac{1}{2}\int_{\tau}^\infty\!\!\!dt\: S_\nu(t) E_2(t - \tau)
+ - 
+\frac{1}{2} \int_0^{\tau}\!dt\: S_\nu(t) E_2(\tau - t).
+\end{align}
+In general, the flux will depend on the frequency, the
+effective temperature, and the optical depth. However, we
+can hide the dependency on the effective temperature as
+follows. In the Plank function, the temperature appears only
+in the combination $h\nu/kT$. Therefore we can simplify this
+equation by defining non-dimensional frequency and temperature surrogates $\alpha$ and $\theta$ by
+\begin{align}
+\alpha &\equiv h\nu/k\Teff\\
+\noalign{and}
+\theta &\equiv T/\Teff.
+\end{align}
+Note that $\theta = 1$ corresponds to $T = \Teff$. We then work with the flux surrogate $H_\alpha(\alpha)$ defined by
+\begin{align}
+H_\alpha d\alpha = H_\nu d\nu
+\end{align}
+and the non-dimensional normalized flux surrogate $\hat H_\alpha(\alpha)$ defined by
+\begin{align}
+\hat H_\alpha 
+&\equiv \frac{H_\alpha}{H}
+\end{align}
+Using the Milne equation above with the general result that $H = F/4\pi = \sigma \Teff^4/4\pi$, the value of the source function under our assumptions $S_\nu = B_\nu(T)$, and the definitions of $\alpha$ and $\theta$, we find
+\begin{align}
+\hat H_\alpha 
+&= \frac{30}{\pi^4} \alpha^3
+\left[
+\int_{\tau}^\infty\!\!\!dt\: 
+\frac{E_2(t - \tau)}{e^{\alpha/\theta(t)} - 1}
+ - 
+\int_0^{\tau}\!dt\:  
+\frac{E_2(\tau - t)}{e^{\alpha/\theta(t)} - 1}
+\right].
+\end{align}
+Note that this expression depends on $\alpha$ and $\tau$ only. Our choice of variables has eliminated the dependence on $\Teff$ and allowed us to obtain a universal result that we can scale to a specific atmosphere.
+
+For comparison, we can also define the non-dimensional normalized Planck function surrogate $\hat B_\alpha(\alpha, \theta)$ by
+\begin{align}
+\hat B_\alpha &\equiv \frac{B_\alpha}{B}\\
+&= \frac{B_\nu}{B}\frac{d\nu}{d\alpha}\\
+&=\frac{15}{\pi^4}\frac{\alpha^3}{\theta^4}(e^{\alpha/\theta} -1)^{-1}.
+\end{align}
+
+Figure \ref{figure-grey-flux} shows the shape of the
+normalized flux surrogate $\hat H_\alpha$ as a function of the frequency surrogate $\alpha$ at $\tau = 0$, 1, 2, and 4. The figure
+clearly shows the progressive reddening of the flux as it
+progresses to lower optical depth. Also marked in the figure
+is the equivalent normalized flux surrogate from a black body emitting at the effective
+temperature ($\pi \hat B_\alpha$ with $\theta = 1$); it is close to but different to the emergent
+flux. This demonstrates that even this simple atmosphere
+shows departures from a black body emitter.
+
+\begin{figure}
+\footnotesize
+\begin{tikzpicture}
+\begin{axis}[
+   xlabel={$\alpha$},
+   ylabel={$\hat H_\alpha$},
+   ymin=0.0,
+   ymax=0.3,
+   minor y tick num=3,
+   xmin=0,
+   xmax=10,
+   minor x tick num=4, 
+]
+\addplot[red,dashed] table[x index=0,y index=1]{chapter-5/grey-flux.tsv};
+\addplot[red,solid] table[x index=0,y index=2]{chapter-5/grey-flux.tsv};
+\addplot[green,solid] table[x index=0,y index=3]{chapter-5/grey-flux.tsv};
+\addplot[blue,solid] table[x index=0,y index=4]{chapter-5/grey-flux.tsv};
+\end{axis}
+\end{tikzpicture}
+\caption{The value of the normalized flux surrogate $\hat H_\alpha(\tau)$ as  function of the non-dimensional frequency surrogate $\alpha$ for an LTE grey
+atmosphere at $\tau = 0$ (red), 1 (green), and 4 (blue) and for an atmosphere emitting as a black-body at the effective temperature (dashed
+line).}
+\label{figure-grey-flux}
+\end{figure}
+
+\newslide
+
+\subsection{Heating and Cooling}
+
+\begin{figure}
+\footnotesize
+\begin{tikzpicture}
+\begin{axis}[
+   xlabel={$\alpha$},
+   ylabel={$\hat J_\alpha$ or $\hat S_\alpha$},
+   ymin=0,
+   ymax=0.3,
+   minor y tick num=3,
+   xmin=0,
+   xmax=10,
+   minor x tick num=4,
+]
+\addplot[red,solid] table[x index=0,y index=1]{chapter-5/grey-heating-and-cooling.tsv};
+\addplot[red,dashed] table[x index=0,y index=2]{chapter-5/grey-heating-and-cooling.tsv};
+\addplot[green,solid] table[x index=0,y index=3]{chapter-5/grey-heating-and-cooling.tsv};
+\addplot[green,dashed] table[x index=0,y index=4]{chapter-5/grey-heating-and-cooling.tsv};
+\addplot[blue,solid] table[x index=0,y index=5]{chapter-5/grey-heating-and-cooling.tsv};
+\addplot[blue,dashed] table[x index=0,y index=6]{chapter-5/grey-heating-and-cooling.tsv};
+\end{axis}
+\end{tikzpicture}
+\caption{The value of the normalized mean intensity surrogate $\hat J_\alpha(\tau)$ (solid lines) and
+the normalized source function surrogate $\hat S_\alpha(\tau)/S(\tau)$ (dashed lines)  as  function of the non-dimensional frequency surrogate $\alpha$ for an
+LTE grey atmosphere at $\tau = 0$ (red), $\tau = 1$ (green), and $\tau = 4$ (blue).}
+\label{figure-grey-heating-and-cooling}
+\end{figure}
+
+Similarly, we can use the Schwartzschild equation to determine $J_\nu(\tau)$ and define non-dimensional surrogates for the mean intensity $J_\nu$ and the source functions $S_\nu$. We find,
+\begin{align}
+\hat J_\alpha 
+&= \frac{15}{2\pi^4} \frac{\alpha^3}{\theta^4}
+\int_0^{\infty}\!dt\:  
+\frac{E_1(\tau - t)}{e^{\alpha/\theta(t)} - 1}\\
+\noalign{and}
+\hat S_\alpha &= \hat B_\alpha.
+\end{align}
+
+
+Figure \ref{figure-grey-heating-and-cooling} compares the mean intensity
+$J_\tau/J$ and the source function $S_\nu/S = B_\nu/B$ for $\tau = 0$,
+1, 2, 4, and 8. It illustrates two important points. First, even though
+in the grey atmosphere the condition of radiative equilibrium requires
+that $J = S$, in general we do not have $J_\nu = S_\nu$. The departures
+are largest at small optical depths. However, at large optical depths we
+begin to approach the diffusion approximation for which $J_\nu
+\approx S_\nu$.
+
+\newslide
+
+Second, we can identify which parts of $J_\nu$ are responsible for
+heating and cooling. $J_\nu$ will be result in heating (i.e., will
+deposit more energy than is emitted in this frequency range) is it is
+larger than $S_\nu$. Similarly, $J_\nu$ will result in cooling (i.e.,
+will deposit less energy than is emitted in this frequency range) if it
+is smaller than $S_\nu$. For the grey atmosphere, the heating is provide
+by the Wien (high frequency) part of $J_\nu$ and the cooling by the
+Rayleigh-Jeans (low frequency) part. We can understand this from the
+dependence of the Planck curve on temperature. In the Wien regime we
+have
+\begin{align}
+B_\nu(T) \approx \frac{2 h\nu^3}{c^2} e^{-h\nu/kT},
+\end{align}
+which drops very rapidly with $T$. In the Rayleigh-Jeans
+regime we have
+\begin{align}
+B_\nu(T) \approx \frac{2 k \nu^2}{c^2} T,
+\end{align}
+which obviously drops only linearly with $T$. Thus, as the temperature
+increases, the Wien region increases much more rapidly than the
+Rayleigh-Jeans region. The mean intensity at the surface arises from a
+range of optical depths, each of which has a source function that
+corresponds to a higher temperature and relatively larger in the Wien
+region than the source function. This is reflected in the mean intensity
+at the surface being relatively stronger in the Wien region than in the
+Rayleigh-Jeans region. Since radiative equilibrium requires that the
+integrated $J$ and $S$ be equal, the augmented Wien region must be
+compensated by a diminished Rayleigh-Jeans region. This is a simple
+example of a universal phenomena, that in general we have $S_\nu \ne
+J_\nu$, and so there are parts of the mean intensity that are
+responsible for heating and and other parts that are responsible for
+cooling.
+
+\newslide
+
+\subsection{Photometric Colors}
+
+\begin{figure}
+\footnotesize
+\begin{tikzpicture}
+\begin{axis}[
+   xlabel={$\log_{10} \Teff$},
+   ylabel={$B-V$},
+   ymin=-1,
+   ymax=+2,
+   minor y tick num=4,
+   xmin=3.3,
+   xmax=4.7,
+   minor x tick num=4,
+]
+\addplot[black,solid] table[x index=0,y index=1]{chapter-5/observed-B-V.tsv};
+\addplot[black,dashed] table[x index=0,y index=1]{chapter-5/grey-B-V.tsv};
+\end{axis}
+\end{tikzpicture}
+\caption{The observed relation between $\Teff$ and $B-V$ for
+main sequence stars (solid line) and the relation predicted
+by an LTE grey atmosphere (dashed line).}
+\label{figure-grey-b-v}
+\bigskip
+\end{figure}
+
+\begin{figure}
+\footnotesize
+\begin{tikzpicture}
+\begin{axis}[
+   xlabel={$\log_{10} \Teff$},
+   ylabel={$U-B$},
+   ymin=-1.5,
+   ymax=+1.5,
+   minor y tick num=4,
+   xmin=3.3,
+   xmax=4.7,
+   minor x tick num=4,
+]
+\addplot[black,solid] table[x index=0,y index=1]{chapter-5/observed-U-B.tsv};
+\addplot[black,dashed] table[x index=0,y index=1]{chapter-5/grey-U-B.tsv};
+\end{axis}
+\end{tikzpicture}
+\caption{The observed relation between $\Teff$ and $U-B$ for
+main sequence stars (solid line) and the relation
+predicted by an LTE grey atmosphere (dashed line).}
+\label{figure-grey-u-b}
+\end{figure}
+
+The limits of the grey atmosphere become apparent when we compare
+$F_\nu$ to the observed fluxes from stars. Obviously, the flux from from
+a grey atmosphere shows no lines, but it also differs markedly from the
+shape of the continuum. Figure \ref{figure-grey-b-v} shows the observed
+relation of $B-V$ color for main sequence stars and the relation
+predicted by an LTE grey atmosphere. The magnitudes were estimated by
+assuming that the response curves for $B$ and $V$ were top-hat function
+with central wavelengths and widths taken from Table
+\ref{table-filters}. The zero-points were fixed by requiring that the
+color be zero for an effective temperature of 10,000 K, roughly
+appropriate for an A0V star. That is,
+\begin{align}
+B-V =
+-2.5 \log_{10}\left(\frac{F_B(\Teff)}{ F_V(\Teff)}\right)
++ 2.5 \log_{10}\left(\frac{F_B(10^4\:\mathrm{K})}{F_V(10^4\:\mathrm{K})}\right).
+\end{align}
+The colors are relatively close above $\log_{10} \Teff
+\approx 3.85$ or $\Teff \approx 7000$, which corresponds to
+stars earlier than F2. However, for the cooler stars, the observed
+colors are significantly redder (more positive) than those predicted.
+Overall, though, the agreement is surprisingly good. However, Figure
+\ref{figure-grey-u-b} shows the observed and predicted relations of
+$U-B$, and it tells a different story. There are large discrepancies,
+both in the shape of the curve and in the values of the color. The root
+of the problem is that $U$ lies largely to the blue of the Balmer jump,
+the absorption feature caused by photoionization from the $n=2$ level in
+neutral hydrogen, whereas $B$ lies to the red. In A and F stars in
+particular, the Balmer jump is very strong, for reasons we will discuss
+later, and this causes the atmosphere to be very non-grey.
+
+The conclusions we can draw from these comparisons is that
+the grey atmosphere is a useful didactic tool, and shows
+some of the qualitative behaviours of real stellar
+atmospheres. However, it does not show all of the
+qualititive behaviours -- it has nothing like the Balmer
+jump -- and is of very limited quantitative value.
+
+\section{Notes and Further Reading}
+
+\subsection{The Eddington-Barbier Approximation}
+
+The origins of the use of the Eddington-Barbier approximation
+for determining $\chi$ from the
+solar limb darkening function (see problem \ref{problem-solar-temperature-structure}
+) lie in investigations by
+\cite{Milne-1922} and \cite{Lundblad-1923}. A determination
+of the empirical extinction coefficient by \cite{Muench-1945} and
+\cite{Chandrasekhar-1946b},
+using a more sophisticated method and better observations,
+showed good agreement with calculations by
+\cite{Chandrasekhar-1946a} of opacity of the $\mathrm{H}^-$ ion,
+and confirmed the suggestion made by \cite{Wildt-1939} that
+$\mathrm{H}^-$ was the dominant source of opacity in the Sun at optical
+and near-infrared wavelengths. \citet[pp.\
+260--263]{Mihalas-1978} discusses the limitations imposed by
+observational uncertainties.
+
+
