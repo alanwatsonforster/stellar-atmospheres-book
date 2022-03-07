@@ -1,2 +1,8 @@
 
 .DS_Store
+*.aux
+*.log
+*.out
+book.synctex.gz
+*.toc
+book.pdf
