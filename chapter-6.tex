@@ -185,9 +185,9 @@ One theoretical example of a constant scale-height atmosphere is an isothermal a
    xmax=3,
    minor x tick num=4,
 ]
-\addplot[black,solid] table[x index=0,y index=1]{figures/grey-density.dat};
-\addplot[black,dashed] table[x index=0,y index=2]{figures/grey-density.dat};
-\addplot[black,dotted] table[x index=0,y index=0]{figures/grey-density.dat};
+\addplot[black,solid] table[x index=0,y index=1]{chapter-6/grey-density.tsv};
+\addplot[black,dashed] table[x index=0,y index=2]{chapter-6/grey-density.tsv};
+\addplot[black,dotted] table[x index=0,y index=0]{chapter-6/grey-density.tsv};
 \end{axis}
 \end{tikzpicture}
 \caption{The value of $T(\tau)/T(1)$ (solid line) and $\rho(\tau)/\rho(1)$ (dashed line) for an LTE grey atmosphere with constant $\mu$ and $a$. The value of $\rho(\tau)/\rho(1)$ for an isothermal atmosphere is shown as a dotted line.}
