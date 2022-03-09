@@ -58,7 +58,7 @@ To proceed, we need to relate the macroscopic extinction coefficient, with its a
 Consider Figure \ref{fig-cross-section}, which shows the
 volume $dV$ formed by sweeping an area $dA$ centered on
 $\vec r$ thought a length $ds$ parallel to $\vec n$ which is
-perpendicular to $dA$. Consider $dV$ is filled with a single type of particle with number density $n$. If these particles can interact with radiation, there is a probability that a photon that enters $dV$ in the direction $n$ will be absorbed or scattered. We define the cross-sections for absorption $\crosssection^a$ and scattering $\crosssection^s$ such that the probability of absorption or scattering of a photon is given by $n \crosssection^ads$ and $n\crosssection^sds$. (It is conventional to use $\sigma$ to denote the cross-section, but here we will use $\crosssection$ to avoid confusion with the scattering coefficient $\sigma$.)
+perpendicular to $dA$. Consider $dV$ is filled with a single type of particle with number density $n$. If these particles can interact with radiation, there is a probability that a photon that enters $dV$ in the direction $n$ will be absorbed or scattered. We define the cross-sections for absorption $\crosssection^\alpha$ and scattering $\crosssection^\sigma$ such that the probability of absorption or scattering of a photon is given by $n \crosssection^\alpha ds$ and $n\crosssection^\sigma ds$. (It is conventional to use $\sigma$ to denote the cross-section, but here we will use $\crosssection$ to avoid confusion with the scattering coefficient $\sigma$.)
 
 \begin{figure}
 \begin{center}
@@ -105,35 +105,49 @@ perpendicular to $dA$. Consider $dV$ is filled with a single type of particle wi
 
 \newslide
 
-Naively, we can interpret the cross-section as the area around a particle within which the probability of interaction is 1 and outside of which the probability is 0. This is illustrated in Figure~\ref{fig-classical-cross-section}. Under this interpretation, the total area in $dV$ for interactions is the number of particles in $dV$ is the total number of particles $n dV$ multiplied by the cross-section per particle $\crosssection$. Thus, the probabilidad of an interaction is $n dV \crosssection/dA = n\crosssection ds$. This discussion helps motivate the definition of $\crosssection$, but we must remember that quantum mechanics teaches us that the interaction is probabilistic, not deterministic like this.
+Naively, we can interpret the cross-section as the area around a particle within which the probability of interaction is 1 and outside of which the probability is 0. This is illustrated in Figure~\ref{fig-classical-cross-section}. Under this interpretation, the total area in $dV$ for interactions is the number of particles in $dV$ is the total number of particles $n dV$ multiplied by the cross-section per particle $\crosssection$. Thus, the probability $dP$ of an interaction is
+\begin{align}
+dP = n dV \crosssection/dA = n\crosssection ds.
+\label{equation:cross-section}
+\end{align}
+This discussion helps motivate the definition of $\crosssection$, but we must remember that quantum mechanics teaches us that the interaction is probabilistic, not deterministic. Nevertheless, we can continue to use cross-sections provided we use equation~\ref{equation:cross-section} as the definition of the \emph{effective} cross-section and take $dP$ from quantum mechanics. One result from quantum mechanics is that the cross-section can depend on frequency (i.e., it is not necessarily grey).
 
-If we have many types of particles, the total probability of absorption or scattering is given by $(\sum_i n_i \crosssection^a_i)ds$ and $(\sum_i n_i \crosssection^s_i)ds$,  in which the index $i$ extends over all types of
-particles. 
 
 \newslide
 
 We saw in Problem~\ref{problem-optical-depth} that the probability density function for the absorption of a photon is an exponential distribution in the optical depth $\tau$ with a mean of 1. Thus, the probability $P(<d\tau)$ that a photon is extinguished between $\tau = 0$ and $\tau = d\tau$ is
 \begin{align}
-P(<d\tau) &= 1 - \exp^{-d\tau}\\
+P(<d\tau) &= 1 - e^{-d\tau}\\
 &= 1 - (1 - {d\tau})\\
 &= {d\tau},
 \end{align}
 in which we have expanded for small $d\tau$.
-Now, since
+Now, since $d\tau &= \chi ds$ and $\chi = \alpha+ \sigma$, we find
 \begin{align}
-d\tau &= \chi ds\\
-&= (\alpha + \sigma) ds,
+P(<d\tau) &= (\alpha + \sigma) ds.
 \end{align}
-by comparison to our definition of the cross-section, 
+By comparison to our definition of the cross-section, 
 we can identify absorption and scattering coefficients as
 \begin{align}
-\alpha &= \sum_i n_i \crosssection^a_i(\nu)\\
+\alpha &= n \crosssection^\alpha\\
 \intertext{and}
-\sigma &= \sum_i n_i \crosssection^s_i(\nu),
+\sigma &= n \crosssection^\sigma.
+\end{align}
+
+If we have many types of particles, the total probability of absorption or scattering is given by
+\begin{align}
+dP = \sum_i n_i \crosssection_i ds,
+\end{align}
+in which the index $i$ extends over all types of
+particles. Again, we can identify absorption and scattering coefficients as
+\begin{align}
+\alpha &= \sum_i n_i \crosssection^\alpha_i\\
+\intertext{and}
+\sigma &= \sum_i n_i \crosssection^\sigma_i,
 \end{align}
 in which $n_i$ is the number density of particles of type $i$ and
-$\crosssection^a_i(\nu)$ and $\crosssection^s_i$ are the absorption or scattering cross-section per
-particle at frequency $\nu$.
+$\crosssection^\alpha_i$ and $\crosssection^\sigma_i$ are the absorption or scattering cross-section per
+particle.
 
 Thus, we can divide the problem of determining the opacity
 into two subproblems: determining the number densities $n_i$ and determining
