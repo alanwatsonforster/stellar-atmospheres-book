@@ -5,22 +5,23 @@
 \chapter{The LTE Extinction Coefficient}
 \label{chapter-lte-opacity-and-emissivity}
 
- In this chapter, we will assume both LTE and coherent and isotropic scattering. With these assumptions, we can write the radiation transfer equation in terms of the local density, temperature, composition, and mean intensity. This is an enormous simplification. 
+\noindent
+We saw in section~\ref{section:grey-atmosphere} that while the grey atmosphere shows many of the qualitative properites of a real atmosphere, it fails quantitatively. The main reason for this is precisely the assumption that the opacity is grey. In this chapter, we will begin to consider how to lift this assumption and calculate more realistic opacities. For the time being, though will continue to assume both LTE and coherent and isotropic scattering.
 
 \newslide
 
-In general, to solve an atmosphere, we need both the extinction coefficient $\chi$ and the source function $S_\nu$. With these, we can integrate the formal solution. 
+In general, to solve an atmosphere, we need both the extinction coefficient $\chi$ and the source function $S_\nu$. With these in hand, we can integrate the formal solution. 
 
 Under the assumption of LTE, all properties of matter are properties of the local temperature, density, and composition. This includes the extinction coefficient $\chi$ and its components the absorption coefficient $\alpha$ and the scattering coefficient $\sigma$.
-However, under the assumptions of both LTE and coherent and isotropic scattering, equation \ref{equation-lte-and-coherent-and-isotropic-scattering} gives
+Furthermore, if we assume coherent and isotropic scattering, equation \ref{equation-lte-and-coherent-and-isotropic-scattering} gives
 \begin{align}
 S_\nu = \frac{\alpha B_\nu + \sigma J_\nu}{\alpha + \sigma}.
 \end{align}
 Thus, we see that the source function also depends only on the local properties of the matter, through $B_\nu(T)$, $\alpha$, and $\sigma$, and the local mean intensity $J_\nu$.
 
-The solution for a static atmosphere in LTE and with coherent and isotropic scattering thus has two parts. The first is the determination of $\alpha$ and $\sigma$ for given properties of matter. The second is the determination of the temperature and density in a manner that satisfies the equation of transfer of radiation, thermal (often radiative) equilibrium, and mechanical (often hydrostatic) equilibrium. These two parts are coupled (since radiation determines the properties of the material and the properties of the material determine radiation), and so the solutions is typically iterative.
+The solution for a static atmosphere in LTE and with coherent and isotropic scattering thus has two parts. The first is the determination of $\alpha$ and $\sigma$ locally for given properties of matter (composition, density, and temperature). The second is the determination of the temperature and density globally in a manner that satisfies the equation of transfer of radiation, thermal (often radiative) equilibrium, and mechanical (often hydrostatic) equilibrium. These two parts are coupled (since radiation determines the properties of the material and the properties of the material determine radiation), and so the solutions is typically iterative.
 
-In this chapter, we will address the determination of $\alpha$ and $\sigma$ for a given temperature, density, and composition. We will defer solution of the global problem for a subsequent chapter.
+In this chapter, we will address the determination of $\alpha$ and $\sigma$ locally for a given temperature, density, and composition. We will defer solution of the global problem for a following chapter.
 
 \newslide
 
