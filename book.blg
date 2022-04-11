@@ -1,0 +1,66 @@
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: book.aux
+A level-1 auxiliary file: cover.aux
+A level-1 auxiliary file: front-matter.aux
+A level-1 auxiliary file: preface.aux
+A level-1 auxiliary file: chapter-1.aux
+A level-1 auxiliary file: chapter-2.aux
+A level-1 auxiliary file: chapter-3.aux
+A level-1 auxiliary file: chapter-4.aux
+A level-1 auxiliary file: chapter-5.aux
+A level-1 auxiliary file: chapter-6.aux
+A level-1 auxiliary file: chapter-7.aux
+A level-1 auxiliary file: chapter-8.aux
+A level-1 auxiliary file: chapter-9.aux
+A level-1 auxiliary file: chapter-10.aux
+A level-1 auxiliary file: chapter-11.aux
+A level-1 auxiliary file: chapter-12.aux
+A level-1 auxiliary file: appendix-a.aux
+A level-1 auxiliary file: appendix-b.aux
+A level-1 auxiliary file: appendix-c.aux
+A level-1 auxiliary file: end-matter.aux
+The style file: astroads.bst
+Database file #1: main.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+You've used 40 entries,
+            3025 wiz_defined-function locations,
+            892 strings with 9778 characters,
+and the built_in function-call counts, 16367 in all, are:
+= -- 1370
+> -- 816
+< -- 40
++ -- 301
+- -- 261
+* -- 1203
+:= -- 3030
+add.period$ -- 40
+call.type$ -- 40
+change.case$ -- 260
+chr.to.int$ -- 58
+cite$ -- 40
+duplicate$ -- 758
+empty$ -- 1304
+format.name$ -- 357
+if$ -- 3292
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 39
+newline$ -- 170
+num.names$ -- 160
+pop$ -- 308
+preamble$ -- 1
+purify$ -- 247
+quote$ -- 0
+skip$ -- 699
+stack$ -- 0
+substring$ -- 688
+swap$ -- 12
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 312
+warning$ -- 0
+while$ -- 148
+width$ -- 0
+write$ -- 411
