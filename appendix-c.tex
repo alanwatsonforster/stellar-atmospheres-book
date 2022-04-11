@@ -892,7 +892,33 @@ Figure~\ref{figure:problem-hydrogen-ionization} shows $f_+$, $f_0$, and $f_-$ fo
 \end{problem}
 
 \begin{problem}
-TODO
+
+Figure~\ref{figure:problem-vega-flux} shows the ATLAS9 model flux from the fp00k0c125odfnew grid at
+\begin{quote}
+\url{https://wwwuser.oats.inaf.it/castelli/}
+\end{quote}
+for $\Teff = 10,000$~K and $\log g = 4.0$ diluted by a factor of $(4\pi R^2)/(4 \pi D^2) = (R/D)^2 = \alpha^2/4$ in which $\alpha$ is the angular diameter. Note that the flux density at 550~nm is about 3000 Jy, more or less as expected from considerations of the zero points of the Johnson $V$ and the AB magnitude systems.
+
+\begin{figure}
+\footnotesize
+\begin{tikzpicture}
+\begin{axis}[
+   xlabel={$\lambda$ [nm]},
+   ylabel={$F_\nu$ [Jy]},
+   ymin=0,
+   ymax=5000,
+   minor y tick num=3,
+   xmin=300,
+   xmax=1000,
+   minor x tick num=3, 
+]
+\addplot[black] table[x index=0,y index=1]{problems-5/vega.tsv};
+\end{axis}
+\end{tikzpicture}
+\caption{Estimated flux of Vega at the Earth.}
+\label{figure:problem-vega-flux}
+\end{figure}
+
 \end{problem}
 
 \begin{problem}
