@@ -878,7 +878,7 @@ emission can be thought of a photon passing an atom and the
 result being two photons rather than none, the result for
 absorption.
 
-There is one difference, however, betweeen absorption and
+There is one difference, however, between absorption and
 stimulated emission. The probability for stimulated emission
 is proportional to the emission profile $\psi$ whereas
 probability of absorption is proportional to the absorption
@@ -891,45 +891,48 @@ difference between the profiles is not important. In this
 case, stimulated emission can be treated exactly as a
 negative absorption.
 
-We can write the contribution of a single line to the
-emission coefficient $j_\nu(\nu)$ and the absorption
-coefficient $\alpha$ as
-\begin{align}
-j_\nu^\mathrm{L}(\nu) &\equiv j^\mathrm{L} \psi(\nu)\\
-\intertext{and}
-\alpha^\mathrm{L}(\nu) &\equiv \alpha^\mathrm{L} \phi(\nu).
-\end{align}
-Here we have ignored the difference between the profiles for
-absorption and stimulated emission. Because of the
-normalization of $\psi$ and $\phi$, we have
-\begin{align}
-j^\mathrm{L} &= \int_0^\infty\!\!\!d\nu\:j_\nu^\mathrm{L}(\nu)\\
-\intertext{and}
-\alpha^\mathrm{L} &= \int_0^\infty\!\!\!d\nu\:\alpha^\mathrm{L}(\nu),
-\end{align}
-and so $j^\mathrm{L}$ and $\alpha$ are known as the
-integrated line emission and aborption coefficients. We can
-now see that $j^\mathrm{L}$ and $\alpha$ characterize
-the strength of a line, whereas $\psi$ and $\phi$
-characterize its shape. In terms of the Einstein
-coefficients, the intergrated coefficients are given by
-\begin{align}
-j^\mathrm{L} &= \frac{h\nu}{4\pi} A_{ul} n_u\\
-\intertext{and}
-\alpha^\mathrm{L} &= \frac{h\nu}{4\pi} (B_{lu} n_l - B_{ul}
-n_u).
-\end{align}
+%We can write the contribution of a single line to the
+%emission coefficient $j_\nu(\nu)$ and the absorption
+%coefficient $\alpha$ as
+%\begin{align}
+%j_\nu^\mathrm{L}(\nu) &\equiv j^\mathrm{L} \psi(\nu)\\
+%intertext{and}
+%\alpha^\mathrm{L}(\nu) &\equiv \alpha^\mathrm{L} \phi(\nu).
+%\end{align}
+%Here we have ignored the difference between the profiles for
+%absorption and stimulated emission. Because of the
+%normalization of $\psi$ and $\phi$, we have
+%\begin{align}
+%j^\mathrm{L} &= \int_0^\infty\!\!\!d\nu\:j_\nu^\mathrm{L}(\nu)\\
+%\intertext{and}
+%\alpha^\mathrm{L} &= \int_0^\infty\!\!\!d\nu\:\alpha^\mathrm{L}(\nu),
+%\end{align}
+%and so $j^\mathrm{L}$ and $\alpha$ are known as the
+%integrated line emission and absorption coefficients. We can
+%now see that $j^\mathrm{L}$ and $\alpha$ characterize
+%the strength of a line, whereas $\psi$ and $\phi$
+%characterize its shape. In terms of the Einstein
+%coefficients, the intrgrated coefficients are given by
+%\begin{align}
+%j^\mathrm{L} &= \frac{h\nu}{4\pi} A_{ul} n_u\\
+%\intertext{and}
+%\alpha^\mathrm{L} &= \frac{h\nu}{4\pi} (B_{lu} n_l - B_{ul}
+%n_u).
+%\end{align}
 
-We can use the Einstein relation that $g_l B_{lu} = g_u
+Under assumption that the profiles are equal, we can use the Einstein relation that $g_l B_{lu} = g_u
 B_{ul}$ to write the integrated emission coefficient as
 \begin{align}
 \alpha^\mathrm{L} &= \frac{h\nu}{4\pi} B_{lu} n_l \left(1 - 
-\frac{g_l n_u}{g_u n_l}\right).
+\frac{g_l n_u}{g_u n_l}\right) \phi.
 \end{align}
 This has the form of the coefficient for true absorption
-multiplied by a correction factor that accounts for
-stimulated emission. If $n_u/n_l > g_u/g_l$ we have a
-\emph{population inversion} and the absorption coefficient
+multiplied by a correction factor $(1 - 
+g_l n_u/g_u n_l)$ that accounts for
+stimulated emission. 
+
+If $n_u/n_l > g_u/g_l$ we have what is known as a 
+\emph{population inversion} and the correction factor and therefore the absorption coefficient
 becomes negative. In this case, stimulated emission more
 than compensates for absorption, and as light passes through
 the medium it will be amplified by stimulated emission,
@@ -985,7 +988,6 @@ balances absorption. The increasing importance of stimulated
 emission means that only a small
 over-population of the upper level relative to its LTE value
 is sufficient to cause a line to mase. However, at higher frequencies we need impossibly large over-populations to cause a line to lase.
-
 For example, in
 \ion{H}{II} regions the levels of hydrogen have non-LTE
 population. The radio recombination line H72$\alpha$
